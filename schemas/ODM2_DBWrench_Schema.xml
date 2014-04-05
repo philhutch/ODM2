@@ -2,7 +2,7 @@
   <VerLbl/>
   <VerNotes/>
   <DefTblOpts/>
-  <DocFolder>\Users\anthony\Git\ODM2\schemas\ODM2_Current</DocFolder>
+  <DocFolder>C:\inetpub\wwwroot\odm2</DocFolder>
   <Sch Cm="Annotations are used to add comments or qualifiers to entity instances in ODM2." nm="ODM2Annotations">
     <Tbl UsSo="1" nm="ActionAnnotations">
       <Cm>Notes for or groups of one or more Actions.</Cm>
@@ -141,7 +141,7 @@
         <ClPr cdCl="AnnotationID" prCl="AnnotationID"/>
       </Fk>
       <Fk deAc="3" nm="fk_ResultValueAnnotations_ResultValues" prLkCl="ValueID" upAc="3">
-        <PrTb mn="0" nm="MeasurementValues" oe="1" sch="ODM2MesurementResults" zr="0"/>
+        <PrTb mn="0" nm="MeasurementValues" oe="1" sch="ODM2ResultsMeasures" zr="0"/>
         <CdTb mn="1" nm="ResultValueAnnotations" oe="0" sch="ODM2Annotations" zr="1"/>
         <ClPr cdCl="ValueID" prCl="ValueID"/>
       </Fk>
@@ -168,62 +168,6 @@
         <PrTb mn="0" nm="SamplingFeatures" oe="1" sch="ODM2Core" zr="0"/>
         <CdTb mn="1" nm="SamplingFeatureAnnotations" oe="0" sch="ODM2Annotations" zr="1"/>
         <ClPr cdCl="SamplingFeatureID" prCl="SamplingFeatureID"/>
-      </Fk>
-      <UniqueConstraints/>
-      <SchTrHis/>
-    </Tbl>
-    <CustomTypes/>
-  </Sch>
-  <Sch Cm="" nm="ODM2CategoryResults">
-    <Tbl UsSo="1" nm="CategoricalCountValues">
-      <TblOpts/>
-      <Pk ClNs="ValueID" nm="pkCategoricalCountValues"/>
-      <Cl au="0" df="" nm="ResultID" nu="0">
-        <DT arr="0" ds="BigInt" en="" id="-5" ln="null" sc="null" sg="1" un="0"/>
-      </Cl>
-      <Cl au="1" df="" nm="ValueID" nu="0">
-        <DT arr="0" ds="BigInt" en="" id="-5" ln="null" sc="null" sg="1" un="0"/>
-      </Cl>
-      <Cl au="0" df="" nm="ValueDateTime" nu="0">
-        <DT arr="0" ds="DateTime" en="" id="700" ln="null" sc="null" sg="1" un="0"/>
-      </Cl>
-      <Cl au="0" df="" nm="DataValue" nu="1">
-        <DT arr="0" ds="NVarChar" en="" id="724" ln="64" sc="null" sg="1" un="0"/>
-      </Cl>
-      <Cl au="0" df="" nm="DataCount" nu="1">
-        <DT arr="0" ds="Integer" en="" id="4" ln="null" sc="null" sg="1" un="0"/>
-      </Cl>
-      <Fk deAc="3" nm="fk_CategoricalCountValues_CategoricalResult" prLkCl="ResultID" upAc="3">
-        <PrTb mn="0" nm="CategoricalResult" oe="1" sch="ODM2CategoryResults" zr="0"/>
-        <CdTb mn="1" nm="CategoricalCountValues" oe="0" sch="ODM2CategoryResults" zr="1"/>
-        <ClPr cdCl="ResultID" prCl="ResultID"/>
-      </Fk>
-      <UniqueConstraints/>
-      <SchTrHis/>
-    </Tbl>
-    <Tbl UsSo="1" nm="CategoricalResult">
-      <TblOpts/>
-      <Pk ClNs="ResultID" nm="pkCategoricalResult"/>
-      <Cl au="0" df="" nm="ResultID" nu="0">
-        <DT arr="0" ds="BigInt" en="" id="-5" ln="null" sc="null" sg="1" un="0"/>
-      </Cl>
-      <Cl au="0" df="" nm="CoverageLabel" nu="1">
-        <DT arr="0" ds="NVarChar" en="" id="724" ln="128" sc="null" sg="1" un="0"/>
-      </Cl>
-      <Cl au="0" df="" nm="CensorCodeCV" nu="0">
-        <DT arr="0" ds="NVarChar" en="" id="724" ln="32" sc="null" sg="1" un="0"/>
-      </Cl>
-      <Cl au="0" df="" nm="QualityCodeCV" nu="0">
-        <DT arr="0" ds="NVarChar" en="" id="724" ln="32" sc="null" sg="1" un="0"/>
-      </Cl>
-      <Cl au="0" df="" nm="AggregationInterval" nu="0">
-        <DT arr="0" ds="NVarChar" en="" id="724" ln="32" sc="null" sg="1" un="0"/>
-        <Cm>ISO TimePeriod</Cm>
-      </Cl>
-      <Fk deAc="3" nm="fk_CategoricalResult_Results" prLkCl="ResultID" upAc="3">
-        <PrTb mn="0" nm="Results" oe="1" sch="ODM2Core" zr="0"/>
-        <CdTb mn="0" nm="CategoricalResult" oe="1" sch="ODM2CategoryResults" zr="1"/>
-        <ClPr cdCl="ResultID" prCl="ResultID"/>
       </Fk>
       <UniqueConstraints/>
       <SchTrHis/>
@@ -1825,183 +1769,6 @@
     </Tbl>
     <CustomTypes/>
   </Sch>
-  <Sch Cm="The resulting values of observations in ODM2." nm="ODM2MesurementResults">
-    <Tbl UsSo="1" nm="MeasurementAttributes">
-      <Cm>Non-mandatory attributes of the data</Cm>
-      <TblOpts/>
-      <Pk ClNs="ValueID" nm="pkMeasurementAttributes"/>
-      <Cl au="0" df="" nm="ValueID" nu="0">
-        <DT arr="0" ds="BigInt" en="" id="-5" ln="null" sc="null" sg="1" un="0"/>
-      </Cl>
-      <Cl au="0" df="" nm="CensorCodeCV" nu="1">
-        <DT arr="0" ds="NVarChar" en="" id="724" ln="null" sc="null" sg="1" un="0"/>
-      </Cl>
-      <Cl au="0" df="" nm="QualityCodeCV" nu="1">
-        <DT arr="0" ds="NVarChar" en="" id="724" ln="null" sc="null" sg="1" un="0"/>
-      </Cl>
-      <Cl au="0" df="" nm="AggregationInterval" nu="1">
-        <DT arr="0" ds="NVarChar" en="" id="724" ln="null" sc="null" sg="1" un="0"/>
-        <Cm>ISO Period</Cm>
-      </Cl>
-      <Cl au="0" df="" nm="AggregationStatisticCV" nu="1">
-        <DT arr="0" ds="NVarChar" en="" id="724" ln="null" sc="null" sg="1" un="0"/>
-        <Cm>AggregationStatistic</Cm>
-      </Cl>
-      <Cl au="0" df="" nm="MeasurementAccuracy" nu="0">
-        <DT arr="0" ds="Float" en="" id="6" ln="null" sc="null" sg="1" un="0"/>
-      </Cl>
-      <Cl au="0" df="" nm="MeasurementAccuracyCV" nu="0">
-        <DT arr="0" ds="NVarChar" en="" id="724" ln="32" sc="null" sg="1" un="0"/>
-      </Cl>
-      <Fk deAc="3" nm="fk_MeasurementAttributes_MeasurementValues" prLkCl="ValueID" upAc="3">
-        <PrTb mn="0" nm="MeasurementValues" oe="1" sch="ODM2MesurementResults" zr="0"/>
-        <CdTb mn="0" nm="MeasurementAttributes" oe="1" sch="ODM2MesurementResults" zr="1"/>
-        <ClPr cdCl="ValueID" prCl="ValueID"/>
-        <Cm>Separates optional properties into a table. If Result set is homogeneous, these are not needed</Cm>
-      </Fk>
-      <UniqueConstraints/>
-      <SchTrHis/>
-    </Tbl>
-    <Tbl UsSo="1" nm="MeasurementCoverages">
-      <Cm>Describes the variations over additional dimensions when ResultType is one or more Coverage types.  As subclass of ResultValues, this table shares the same primary key and can ony have a 1-to-1 (or 0) relationship to ResultValues.</Cm>
-      <TblOpts/>
-      <Pk ClNs="ValueID" nm="pkMeasurementCoverages"/>
-      <Cl au="0" df="" nm="ValueID" nu="0">
-        <DT arr="0" ds="Integer" en="" id="4" ln="null" sc="null" sg="1" un="0"/>
-        <Cm>Primary key and also foreign key to the ResultValues table.</Cm>
-      </Cl>
-      <Cl au="0" df="" nm="SpatialReferenceID" nu="0">
-        <DT arr="0" ds="Integer" en="" id="4" ln="null" sc="null" sg="1" un="0"/>
-        <Cm>Foreign key to CoverageOrigins table, which defines local coordinate system, its orientation and its origin (zero value point).</Cm>
-      </Cl>
-      <Cl au="0" df="" nm="CoverageLabel" nu="1">
-        <DT arr="0" ds="VarChar" en="" id="12" ln="255" sc="null" sg="1" un="0"/>
-        <Cm>A text label for the coverage postion, such as "Spot 1", "Spot 2", etc.</Cm>
-      </Cl>
-      <Cl au="0" df="" nm="ValueX" nu="1">
-        <DT arr="0" ds="Float" en="" id="6" ln="null" sc="null" sg="1" un="0"/>
-        <Cm>Value along the X dimension, as defined by the CoverageType</Cm>
-      </Cl>
-      <Cl au="0" df="" nm="ValueY" nu="1">
-        <DT arr="0" ds="Float" en="" id="6" ln="null" sc="null" sg="1" un="0"/>
-        <Cm>Value along the Y dimension, as defined by the CoverageType</Cm>
-      </Cl>
-      <Cl au="0" df="" nm="ValueZ" nu="1">
-        <DT arr="0" ds="Float" en="" id="6" ln="null" sc="null" sg="1" un="0"/>
-        <Cm>Value along the Z dimension, as defined by the CoverageType</Cm>
-      </Cl>
-      <Cl au="0" df="" nm="XUnitID" nu="1">
-        <DT arr="0" ds="Integer" en="" id="4" ln="null" sc="null" sg="1" un="0"/>
-      </Cl>
-      <Cl au="0" df="" nm="YUnitID" nu="1">
-        <DT arr="0" ds="Integer" en="" id="4" ln="null" sc="null" sg="1" un="0"/>
-      </Cl>
-      <Cl au="0" df="" nm="ZUnitID" nu="1">
-        <DT arr="0" ds="Integer" en="" id="4" ln="null" sc="null" sg="1" un="0"/>
-      </Cl>
-      <Cl au="0" df="" nm="ResultID" nu="0">
-        <DT arr="0" ds="BigInt" en="" id="-5" ln="null" sc="null" sg="1" un="0"/>
-      </Cl>
-      <Cl au="0" df="" nm="CensorCV" nu="1">
-        <DT arr="0" ds="NVarChar" en="" id="724" ln="null" sc="null" sg="1" un="0"/>
-      </Cl>
-      <Cl au="0" df="" nm="QualityCodeCV" nu="1">
-        <DT arr="0" ds="NVarChar" en="" id="724" ln="null" sc="null" sg="1" un="0"/>
-        <Cm>Default Properties fo r Dataset</Cm>
-      </Cl>
-      <Cl au="0" df="" nm="AggregationInterval" nu="1">
-        <DT arr="0" ds="NVarChar" en="" id="724" ln="null" sc="null" sg="1" un="0"/>
-        <Cm>This should be a ISO period specified value for temporal aggregation</Cm>
-      </Cl>
-      <Cl au="0" df="" nm="AggregationStatisticCV" nu="1">
-        <DT arr="0" ds="NVarChar" en="" id="724" ln="null" sc="null" sg="1" un="0"/>
-        <Cm>Term for the aggregation statistic.</Cm>
-      </Cl>
-      <Fk deAc="3" nm="fk_ResultValueCoverages_Results" prLkCl="ResultID" upAc="3">
-        <PrTb mn="0" nm="Results" oe="1" sch="ODM2Core" zr="0"/>
-        <CdTb mn="0" nm="MeasurementCoverages" oe="1" sch="ODM2MesurementResults" zr="1"/>
-        <ClPr cdCl="ResultID" prCl="ResultID"/>
-      </Fk>
-      <Fk deAc="3" nm="fk_ResultValueCoverages_SpatialReferences" prLkCl="SpatialReferenceID" upAc="3">
-        <PrTb mn="0" nm="SpatialReferences" oe="1" sch="ODM2SamplingFeatures" zr="0"/>
-        <CdTb mn="1" nm="MeasurementCoverages" oe="0" sch="ODM2MesurementResults" zr="1"/>
-        <ClPr cdCl="SpatialReferenceID" prCl="SpatialReferenceID"/>
-      </Fk>
-      <UniqueConstraints/>
-      <SchTrHis/>
-    </Tbl>
-    <Tbl UsSo="1" nm="MeasurementValues">
-      <Cm>Describes individual data values within a Result</Cm>
-      <TblOpts/>
-      <Pk ClNs="ValueID" nm="pkMeasurementValues"/>
-      <Cl au="1" df="" nm="ValueID" nu="0">
-        <DT arr="0" ds="BigInt" en="" id="-5" ln="null" sc="null" sg="1" un="0"/>
-        <Cm>Unique identifier</Cm>
-      </Cl>
-      <Cl au="0" df="" nm="ResultID" nu="0">
-        <DT arr="0" ds="BigInt" en="" id="-5" ln="null" sc="null" sg="1" un="0"/>
-        <Cm>Foreign key identifier of the Result containing the data value</Cm>
-      </Cl>
-      <Cl au="0" df="" nm="DataValue" nu="0">
-        <DT arr="0" ds="Float" en="" id="6" ln="null" sc="null" sg="1" un="0"/>
-        <Cm>Numeric data value of the result</Cm>
-      </Cl>
-      <Cl au="0" df="" nm="ValueDateTime" nu="1">
-        <DT arr="0" ds="DateTime" en="" id="700" ln="null" sc="null" sg="1" un="0"/>
-        <Cm>Date/time associated with the Result value</Cm>
-      </Cl>
-      <Cl au="0" df="" nm="ValueDateTimeUTCOffset" nu="1">
-        <DT arr="0" ds="Integer" en="" id="4" ln="null" sc="null" sg="1" un="0"/>
-        <Cm>UTC offset of the date/time associated with the Result value</Cm>
-      </Cl>
-      <Fk deAc="3" nm="fk_ResultValues_Results" prLkCl="ResultID" upAc="3">
-        <PrTb mn="0" nm="MeasurementCoverages" oe="1" sch="ODM2MesurementResults" zr="0"/>
-        <CdTb mn="1" nm="MeasurementValues" oe="0" sch="ODM2MesurementResults" zr="1"/>
-        <ClPr cdCl="ResultID" prCl="ResultID"/>
-        <Cm>Measurements are associted with a coverage</Cm>
-      </Fk>
-      <UniqueConstraints/>
-      <SchTrHis/>
-    </Tbl>
-    <Tbl UsSo="1" nm="QualifierCV">
-      <TblOpts/>
-      <Pk ClNs="QualifierID" nm="pkQualifierCV"/>
-      <Cl au="1" df="" nm="QualifierID" nu="0">
-        <DT arr="0" ds="BigInt" en="" id="-5" ln="null" sc="null" sg="1" un="0"/>
-      </Cl>
-      <UniqueConstraints/>
-      <SchTrHis/>
-    </Tbl>
-    <Tbl UsSo="1" nm="Qualifiers">
-      <TblOpts/>
-      <Pk ClNs="QualifierMeasureID" nm="pkQualifiers"/>
-      <Cl au="1" df="" nm="QualifierMeasureID" nu="0">
-        <DT arr="0" ds="BigInt" en="" id="-5" ln="null" sc="null" sg="1" un="0"/>
-      </Cl>
-      <Cl au="0" df="" nm="ValueID" nu="0">
-        <DT arr="0" ds="BigInt" en="" id="-5" ln="null" sc="null" sg="1" un="0"/>
-      </Cl>
-      <Cl au="0" df="" nm="QualifierId" nu="0">
-        <DT arr="0" ds="BigInt" en="" id="-5" ln="null" sc="null" sg="1" un="0"/>
-      </Cl>
-      <Cl au="0" df="" nm="QualifierOrder" nu="0">
-        <DT arr="0" ds="Integer" en="" id="4" ln="null" sc="null" sg="1" un="0"/>
-      </Cl>
-      <Fk deAc="3" nm="fk_Qualifiers_MeasurementValues" prLkCl="ValueID" upAc="3">
-        <PrTb mn="0" nm="MeasurementValues" oe="1" sch="ODM2MesurementResults" zr="0"/>
-        <CdTb mn="1" nm="Qualifiers" oe="0" sch="ODM2MesurementResults" zr="1"/>
-        <ClPr cdCl="ValueID" prCl="ValueID"/>
-      </Fk>
-      <Fk deAc="3" nm="fk_Qualifiers_QualifierCV" prLkCl="QualifierID" upAc="3">
-        <PrTb mn="0" nm="QualifierCV" oe="1" sch="ODM2MesurementResults" zr="0"/>
-        <CdTb mn="1" nm="Qualifiers" oe="0" sch="ODM2MesurementResults" zr="1"/>
-        <ClPr cdCl="QualifierId" prCl="QualifierID"/>
-      </Fk>
-      <UniqueConstraints/>
-      <SchTrHis/>
-    </Tbl>
-    <CustomTypes/>
-  </Sch>
   <Sch Cm="Entities and attributes for creating and storing provenance information and versions of observations in ODM2." nm="ODM2Provenance">
     <Tbl UsSo="1" nm="InputResults">
       <Cm>Defines the input results that were used to create a derived result</Cm>
@@ -2105,6 +1872,385 @@
         <PrTb mn="0" nm="Results" oe="1" sch="ODM2Core" zr="0"/>
         <CdTb mn="1" nm="ResultVersions" oe="0" sch="ODM2Provenance" zr="1"/>
         <ClPr cdCl="ResultID" prCl="ResultID"/>
+      </Fk>
+      <UniqueConstraints/>
+      <SchTrHis/>
+    </Tbl>
+    <CustomTypes/>
+  </Sch>
+  <Sch Cm="" nm="ODM2ResultsCategorical">
+    <Tbl UsSo="1" nm="CategoricalCountValues">
+      <TblOpts/>
+      <Pk ClNs="ValueID" nm="pkCategoricalCountValues"/>
+      <Cl au="0" df="" nm="ResultID" nu="0">
+        <DT arr="0" ds="BigInt" en="" id="-5" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="1" df="" nm="ValueID" nu="0">
+        <DT arr="0" ds="BigInt" en="" id="-5" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="ValueDateTime" nu="0">
+        <DT arr="0" ds="DateTime" en="" id="700" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="DataValue" nu="0">
+        <DT arr="0" ds="NVarChar" en="" id="724" ln="64" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="DataCount" nu="1">
+        <DT arr="0" ds="Integer" en="" id="4" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Fk deAc="3" nm="fk_CategoricalCountValues_CategoricalResult" prLkCl="ResultID" upAc="3">
+        <PrTb mn="0" nm="CategoricalResult" oe="1" sch="ODM2ResultsCategorical" zr="0"/>
+        <CdTb mn="1" nm="CategoricalCountValues" oe="0" sch="ODM2ResultsCategorical" zr="1"/>
+        <ClPr cdCl="ResultID" prCl="ResultID"/>
+      </Fk>
+      <UniqueConstraints/>
+      <SchTrHis/>
+    </Tbl>
+    <Tbl UsSo="1" nm="CategoricalResult">
+      <TblOpts/>
+      <Pk ClNs="ResultID, ResultCategoricalId" nm="pkCategoricalResult"/>
+      <Cl au="0" df="" nm="ResultID" nu="0">
+        <DT arr="0" ds="BigInt" en="" id="-5" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="CoverageLabel" nu="1">
+        <DT arr="0" ds="NVarChar" en="" id="724" ln="128" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="CensorCodeCV" nu="0">
+        <DT arr="0" ds="NVarChar" en="" id="724" ln="32" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="QualityCodeCV" nu="0">
+        <DT arr="0" ds="NVarChar" en="" id="724" ln="32" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="AggregationInterval" nu="0">
+        <DT arr="0" ds="NVarChar" en="" id="724" ln="32" sc="null" sg="1" un="0"/>
+        <Cm>ISO TimePeriod</Cm>
+      </Cl>
+      <Cl au="1" df="" nm="ResultCategoricalId" nu="0">
+        <DT arr="0" ds="BigInt" en="" id="-5" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Fk deAc="3" nm="fk_CategoricalResult_Results" prLkCl="ResultID" upAc="3">
+        <PrTb mn="0" nm="Results" oe="1" sch="ODM2Core" zr="0"/>
+        <CdTb mn="0" nm="CategoricalResult" oe="1" sch="ODM2ResultsCategorical" zr="1"/>
+        <ClPr cdCl="ResultID" prCl="ResultID"/>
+      </Fk>
+      <UniqueConstraints/>
+      <SchTrHis/>
+    </Tbl>
+    <CustomTypes/>
+  </Sch>
+  <Sch Cm="" nm="ODM2ResultsDepthProfile">
+    <Tbl UsSo="1" nm="ProfilePosition">
+      <TblOpts/>
+      <Pk ClNs="id" nm="pkProfilePosition"/>
+      <Cl au="0" df="" nm="ValueID" nu="0">
+        <DT arr="0" ds="BigInt" en="" id="-5" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="Position" nu="0">
+        <DT arr="0" ds="Geometry" en="" id="779" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="1" df="" nm="id" nu="0">
+        <DT arr="0" ds="BigInt" en="" id="-5" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Fk deAc="3" nm="fk_ProfilePosition_ProfileValues" prLkCl="ValueID" upAc="3">
+        <PrTb mn="0" nm="ProfileValues" oe="1" sch="ODM2ResultsDepthProfile" zr="0"/>
+        <CdTb mn="0" nm="ProfilePosition" oe="1" sch="ODM2ResultsDepthProfile" zr="1"/>
+        <ClPr cdCl="ValueID" prCl="ValueID"/>
+      </Fk>
+      <UniqueConstraints/>
+      <SchTrHis/>
+    </Tbl>
+    <Tbl UsSo="1" nm="ProfileResults">
+      <Cm>Describes the variations over additional dimensions when ResultType is one or more Coverage types.  As subclass of ResultValues, this table shares the same primary key and can ony have a 1-to-1 (or 0) relationship to ResultValues.</Cm>
+      <TblOpts/>
+      <Pk ClNs="ResultProfileID" nm="pkProfileResults"/>
+      <Cl au="1" df="" nm="ResultProfileID" nu="0">
+        <DT arr="0" ds="Integer" en="" id="4" ln="null" sc="null" sg="1" un="0"/>
+        <Cm>Primary key and also foreign key to the ResultValues table.</Cm>
+      </Cl>
+      <Cl au="0" df="" nm="SpatialReferenceID" nu="0">
+        <DT arr="0" ds="Integer" en="" id="4" ln="null" sc="null" sg="1" un="0"/>
+        <Cm>Foreign key to CoverageOrigins table, which defines local coordinate system, its orientation and its origin (zero value point).</Cm>
+      </Cl>
+      <Cl au="0" df="" nm="CoverageLabel" nu="1">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="255" sc="null" sg="1" un="0"/>
+        <Cm>A text label for the coverage postion, such as "Spot 1", "Spot 2", etc.</Cm>
+      </Cl>
+      <Cl au="0" df="" nm="ValueX" nu="1">
+        <DT arr="0" ds="Float" en="" id="6" ln="null" sc="null" sg="1" un="0"/>
+        <Cm>Value along the X dimension, as defined by the CoverageType</Cm>
+      </Cl>
+      <Cl au="0" df="" nm="ValueY" nu="1">
+        <DT arr="0" ds="Float" en="" id="6" ln="null" sc="null" sg="1" un="0"/>
+        <Cm>Value along the Y dimension, as defined by the CoverageType</Cm>
+      </Cl>
+      <Cl au="0" df="" nm="ValueZ" nu="1">
+        <DT arr="0" ds="Float" en="" id="6" ln="null" sc="null" sg="1" un="0"/>
+        <Cm>Value along the Z dimension, as defined by the CoverageType</Cm>
+      </Cl>
+      <Cl au="0" df="" nm="XUnitID" nu="1">
+        <DT arr="0" ds="Integer" en="" id="4" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="YUnitID" nu="1">
+        <DT arr="0" ds="Integer" en="" id="4" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="ZUnitID" nu="1">
+        <DT arr="0" ds="Integer" en="" id="4" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="ResultID" nu="0">
+        <DT arr="0" ds="BigInt" en="" id="-5" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="CensorCV" nu="1">
+        <DT arr="0" ds="NVarChar" en="" id="724" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="QualityCodeCV" nu="1">
+        <DT arr="0" ds="NVarChar" en="" id="724" ln="null" sc="null" sg="1" un="0"/>
+        <Cm>Default Properties fo r Dataset</Cm>
+      </Cl>
+      <Cl au="0" df="" nm="AggregationInterval" nu="1">
+        <DT arr="0" ds="NVarChar" en="" id="724" ln="null" sc="null" sg="1" un="0"/>
+        <Cm>This should be a ISO period specified value for temporal aggregation</Cm>
+      </Cl>
+      <Cl au="0" df="" nm="AggregationStatisticCV" nu="1">
+        <DT arr="0" ds="NVarChar" en="" id="724" ln="null" sc="null" sg="1" un="0"/>
+        <Cm>Term for the aggregation statistic.</Cm>
+      </Cl>
+      <Fk deAc="3" nm="fk_ResultValueCoverages_Results" prLkCl="ResultID" upAc="3">
+        <PrTb mn="0" nm="Results" oe="1" sch="ODM2Core" zr="0"/>
+        <CdTb mn="0" nm="ProfileResults" oe="1" sch="ODM2ResultsDepthProfile" zr="1"/>
+        <ClPr cdCl="ResultID" prCl="ResultID"/>
+      </Fk>
+      <Fk deAc="3" nm="fk_ResultValueCoverages_SpatialReferences" prLkCl="SpatialReferenceID" upAc="3">
+        <PrTb mn="0" nm="SpatialReferences" oe="1" sch="ODM2SamplingFeatures" zr="0"/>
+        <CdTb mn="1" nm="ProfileResults" oe="0" sch="ODM2ResultsDepthProfile" zr="1"/>
+        <ClPr cdCl="SpatialReferenceID" prCl="SpatialReferenceID"/>
+      </Fk>
+      <UniqueConstraints/>
+      <SchTrHis>
+        <StPr stA="ODM2ResultsMeasures" stB="ProfileResults"/>
+      </SchTrHis>
+    </Tbl>
+    <Tbl UsSo="1" nm="ProfileValues">
+      <Cm>Describes individual data values within a Result</Cm>
+      <TblOpts/>
+      <Pk ClNs="ValueID" nm="pkProfileValues"/>
+      <Cl au="1" df="" nm="ValueID" nu="0">
+        <DT arr="0" ds="BigInt" en="" id="-5" ln="null" sc="null" sg="1" un="0"/>
+        <Cm>Unique identifier</Cm>
+      </Cl>
+      <Cl au="0" df="" nm="ResultID" nu="0">
+        <DT arr="0" ds="BigInt" en="" id="-5" ln="null" sc="null" sg="1" un="0"/>
+        <Cm>Foreign key identifier of the Result containing the data value</Cm>
+      </Cl>
+      <Cl au="0" df="" nm="DataValue" nu="0">
+        <DT arr="0" ds="Float" en="" id="6" ln="null" sc="null" sg="1" un="0"/>
+        <Cm>Numeric data value of the result</Cm>
+      </Cl>
+      <Cl au="0" df="" nm="ValueDateTime" nu="1">
+        <DT arr="0" ds="DateTime" en="" id="700" ln="null" sc="null" sg="1" un="0"/>
+        <Cm>Date/time associated with the Result value</Cm>
+      </Cl>
+      <Cl au="0" df="" nm="ValueDateTimeUTCOffset" nu="1">
+        <DT arr="0" ds="Integer" en="" id="4" ln="null" sc="null" sg="1" un="0"/>
+        <Cm>UTC offset of the date/time associated with the Result value</Cm>
+      </Cl>
+      <Cl au="0" df="" nm="OffsetX" nu="0">
+        <DT arr="0" ds="Float" en="" id="6" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="offsetY" nu="0">
+        <DT arr="0" ds="Float" en="" id="6" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="offsetZ" nu="0">
+        <DT arr="0" ds="Float" en="" id="6" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="OffsetUnitsID" nu="0">
+        <DT arr="0" ds="Float" en="" id="6" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Fk deAc="3" nm="fk_ProfileValues_ProfileResults" prLkCl="ResultID" upAc="3">
+        <PrTb mn="0" nm="ProfileResults" oe="1" sch="ODM2ResultsDepthProfile" zr="0"/>
+        <CdTb mn="1" nm="ProfileValues" oe="0" sch="ODM2ResultsDepthProfile" zr="1"/>
+        <ClPr cdCl="ResultID" prCl="ResultID"/>
+        <Cm>Measurements are associted with a coverage</Cm>
+      </Fk>
+      <UniqueConstraints/>
+      <SchTrHis>
+        <StPr stA="ODM2ResultsMeasures" stB="ProfileValues_dup"/>
+      </SchTrHis>
+    </Tbl>
+    <CustomTypes/>
+  </Sch>
+  <Sch Cm="The resulting values of observations in ODM2." nm="ODM2ResultsMeasures">
+    <Tbl UsSo="1" nm="MeasurementAttributes">
+      <Cm>Non-mandatory attributes of the data</Cm>
+      <TblOpts/>
+      <Pk ClNs="ValueID" nm="pkMeasurementAttributes"/>
+      <Cl au="0" df="" nm="ValueID" nu="0">
+        <DT arr="0" ds="BigInt" en="" id="-5" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="CensorCodeCV" nu="1">
+        <DT arr="0" ds="NVarChar" en="" id="724" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="QualityCodeCV" nu="1">
+        <DT arr="0" ds="NVarChar" en="" id="724" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="AggregationInterval" nu="1">
+        <DT arr="0" ds="NVarChar" en="" id="724" ln="null" sc="null" sg="1" un="0"/>
+        <Cm>ISO Period</Cm>
+      </Cl>
+      <Cl au="0" df="" nm="AggregationStatisticCV" nu="1">
+        <DT arr="0" ds="NVarChar" en="" id="724" ln="null" sc="null" sg="1" un="0"/>
+        <Cm>AggregationStatistic</Cm>
+      </Cl>
+      <Cl au="0" df="" nm="MeasurementAccuracy" nu="0">
+        <DT arr="0" ds="Float" en="" id="6" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="MeasurementAccuracyCV" nu="0">
+        <DT arr="0" ds="NVarChar" en="" id="724" ln="32" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Fk deAc="3" nm="fk_MeasurementAttributes_MeasurementValues" prLkCl="ValueID" upAc="3">
+        <PrTb mn="0" nm="MeasurementValues" oe="1" sch="ODM2ResultsMeasures" zr="0"/>
+        <CdTb mn="0" nm="MeasurementAttributes" oe="1" sch="ODM2ResultsMeasures" zr="1"/>
+        <ClPr cdCl="ValueID" prCl="ValueID"/>
+        <Cm>Separates optional properties into a table. If Result set is homogeneous, these are not needed</Cm>
+      </Fk>
+      <UniqueConstraints/>
+      <SchTrHis/>
+    </Tbl>
+    <Tbl UsSo="1" nm="MeasurementResults">
+      <Cm>Describes the variations over additional dimensions when ResultType is one or more Coverage types.  As subclass of ResultValues, this table shares the same primary key and can ony have a 1-to-1 (or 0) relationship to ResultValues.</Cm>
+      <TblOpts/>
+      <Pk ClNs="resultMeasureID" nm="pkMeasurementResults"/>
+      <Cl au="0" df="" nm="resultMeasureID" nu="0">
+        <DT arr="0" ds="Integer" en="" id="4" ln="null" sc="null" sg="1" un="0"/>
+        <Cm>Primary key and also foreign key to the ResultValues table.</Cm>
+      </Cl>
+      <Cl au="0" df="" nm="SpatialReferenceID" nu="0">
+        <DT arr="0" ds="Integer" en="" id="4" ln="null" sc="null" sg="1" un="0"/>
+        <Cm>Foreign key to CoverageOrigins table, which defines local coordinate system, its orientation and its origin (zero value point).</Cm>
+      </Cl>
+      <Cl au="0" df="" nm="CoverageLabel" nu="1">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="255" sc="null" sg="1" un="0"/>
+        <Cm>A text label for the coverage postion, such as "Spot 1", "Spot 2", etc.</Cm>
+      </Cl>
+      <Cl au="0" df="" nm="ValueX" nu="1">
+        <DT arr="0" ds="Float" en="" id="6" ln="null" sc="null" sg="1" un="0"/>
+        <Cm>Value along the X dimension, as defined by the CoverageType</Cm>
+      </Cl>
+      <Cl au="0" df="" nm="ValueY" nu="1">
+        <DT arr="0" ds="Float" en="" id="6" ln="null" sc="null" sg="1" un="0"/>
+        <Cm>Value along the Y dimension, as defined by the CoverageType</Cm>
+      </Cl>
+      <Cl au="0" df="" nm="ValueZ" nu="1">
+        <DT arr="0" ds="Float" en="" id="6" ln="null" sc="null" sg="1" un="0"/>
+        <Cm>Value along the Z dimension, as defined by the CoverageType</Cm>
+      </Cl>
+      <Cl au="0" df="" nm="XUnitID" nu="1">
+        <DT arr="0" ds="Integer" en="" id="4" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="YUnitID" nu="1">
+        <DT arr="0" ds="Integer" en="" id="4" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="ZUnitID" nu="1">
+        <DT arr="0" ds="Integer" en="" id="4" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="ResultID" nu="0">
+        <DT arr="0" ds="BigInt" en="" id="-5" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="CensorCV" nu="1">
+        <DT arr="0" ds="NVarChar" en="" id="724" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="QualityCodeCV" nu="1">
+        <DT arr="0" ds="NVarChar" en="" id="724" ln="null" sc="null" sg="1" un="0"/>
+        <Cm>Default Properties fo r Dataset</Cm>
+      </Cl>
+      <Cl au="0" df="" nm="AggregationInterval" nu="1">
+        <DT arr="0" ds="NVarChar" en="" id="724" ln="null" sc="null" sg="1" un="0"/>
+        <Cm>This should be a ISO period specified value for temporal aggregation</Cm>
+      </Cl>
+      <Cl au="0" df="" nm="AggregationStatisticCV" nu="1">
+        <DT arr="0" ds="NVarChar" en="" id="724" ln="null" sc="null" sg="1" un="0"/>
+        <Cm>Term for the aggregation statistic.</Cm>
+      </Cl>
+      <Fk deAc="3" nm="fk_ResultValueCoverages_Results" prLkCl="ResultID" upAc="3">
+        <PrTb mn="0" nm="Results" oe="1" sch="ODM2Core" zr="0"/>
+        <CdTb mn="0" nm="MeasurementResults" oe="1" sch="ODM2ResultsMeasures" zr="1"/>
+        <ClPr cdCl="ResultID" prCl="ResultID"/>
+      </Fk>
+      <Fk deAc="3" nm="fk_ResultValueCoverages_SpatialReferences" prLkCl="SpatialReferenceID" upAc="3">
+        <PrTb mn="0" nm="SpatialReferences" oe="1" sch="ODM2SamplingFeatures" zr="0"/>
+        <CdTb mn="1" nm="MeasurementResults" oe="0" sch="ODM2ResultsMeasures" zr="1"/>
+        <ClPr cdCl="SpatialReferenceID" prCl="SpatialReferenceID"/>
+      </Fk>
+      <UniqueConstraints/>
+      <SchTrHis/>
+    </Tbl>
+    <Tbl UsSo="1" nm="MeasurementValues">
+      <Cm>Describes individual data values within a Result</Cm>
+      <TblOpts/>
+      <Pk ClNs="ValueID" nm="pkMeasurementValues"/>
+      <Cl au="1" df="" nm="ValueID" nu="0">
+        <DT arr="0" ds="BigInt" en="" id="-5" ln="null" sc="null" sg="1" un="0"/>
+        <Cm>Unique identifier</Cm>
+      </Cl>
+      <Cl au="0" df="" nm="ResultID" nu="0">
+        <DT arr="0" ds="BigInt" en="" id="-5" ln="null" sc="null" sg="1" un="0"/>
+        <Cm>Foreign key identifier of the Result containing the data value</Cm>
+      </Cl>
+      <Cl au="0" df="" nm="DataValue" nu="0">
+        <DT arr="0" ds="Float" en="" id="6" ln="null" sc="null" sg="1" un="0"/>
+        <Cm>Numeric data value of the result</Cm>
+      </Cl>
+      <Cl au="0" df="" nm="ValueDateTime" nu="1">
+        <DT arr="0" ds="DateTime" en="" id="700" ln="null" sc="null" sg="1" un="0"/>
+        <Cm>Date/time associated with the Result value</Cm>
+      </Cl>
+      <Cl au="0" df="" nm="ValueDateTimeUTCOffset" nu="1">
+        <DT arr="0" ds="Integer" en="" id="4" ln="null" sc="null" sg="1" un="0"/>
+        <Cm>UTC offset of the date/time associated with the Result value</Cm>
+      </Cl>
+      <Fk deAc="3" nm="fk_ResultValues_Results" prLkCl="ResultID" upAc="3">
+        <PrTb mn="0" nm="MeasurementResults" oe="1" sch="ODM2ResultsMeasures" zr="0"/>
+        <CdTb mn="1" nm="MeasurementValues" oe="0" sch="ODM2ResultsMeasures" zr="1"/>
+        <ClPr cdCl="ResultID" prCl="ResultID"/>
+        <Cm>Measurements are associted with a coverage</Cm>
+      </Fk>
+      <UniqueConstraints/>
+      <SchTrHis>
+        <StPr stA="ODM2ResultsMeasures" stB="MeasurementValues"/>
+        <StPr stA="ODM2ResultsDepthProfile" stB="MeasurementValues"/>
+      </SchTrHis>
+    </Tbl>
+    <Tbl UsSo="1" nm="QualifierCV">
+      <TblOpts/>
+      <Pk ClNs="QualifierID" nm="pkQualifierCV"/>
+      <Cl au="1" df="" nm="QualifierID" nu="0">
+        <DT arr="0" ds="BigInt" en="" id="-5" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <UniqueConstraints/>
+      <SchTrHis/>
+    </Tbl>
+    <Tbl UsSo="1" nm="Qualifiers">
+      <TblOpts/>
+      <Pk ClNs="QualifierMeasureID" nm="pkQualifiers"/>
+      <Cl au="1" df="" nm="QualifierMeasureID" nu="0">
+        <DT arr="0" ds="BigInt" en="" id="-5" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="ValueID" nu="0">
+        <DT arr="0" ds="BigInt" en="" id="-5" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="QualifierId" nu="0">
+        <DT arr="0" ds="BigInt" en="" id="-5" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="QualifierOrder" nu="0">
+        <DT arr="0" ds="Integer" en="" id="4" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Fk deAc="3" nm="fk_Qualifiers_MeasurementValues" prLkCl="ValueID" upAc="3">
+        <PrTb mn="0" nm="MeasurementValues" oe="1" sch="ODM2ResultsMeasures" zr="0"/>
+        <CdTb mn="1" nm="Qualifiers" oe="0" sch="ODM2ResultsMeasures" zr="1"/>
+        <ClPr cdCl="ValueID" prCl="ValueID"/>
+      </Fk>
+      <Fk deAc="3" nm="fk_Qualifiers_QualifierCV" prLkCl="QualifierID" upAc="3">
+        <PrTb mn="0" nm="QualifierCV" oe="1" sch="ODM2ResultsMeasures" zr="0"/>
+        <CdTb mn="1" nm="Qualifiers" oe="0" sch="ODM2ResultsMeasures" zr="1"/>
+        <ClPr cdCl="QualifierId" prCl="QualifierID"/>
       </Fk>
       <UniqueConstraints/>
       <SchTrHis/>
@@ -2469,7 +2615,7 @@
     <TbGl bkCl="ffff9999" sch="ODM2Core" tbl="Results" x="902" y="47"/>
     <TbGl bkCl="ffff9999" sch="ODM2Core" tbl="Methods" x="685" y="72"/>
     <TbGl bkCl="fffb85e0" sch="ODM2Annotations" tbl="MethodAnnotations" x="687" y="305"/>
-    <TbGl bkCl="ffccccff" sch="ODM2MesurementResults" tbl="MeasurementValues" x="1196" y="85"/>
+    <TbGl bkCl="ffccccff" sch="ODM2ResultsMeasures" tbl="MeasurementValues" x="1196" y="85"/>
     <TbGl bkCl="fffb85e0" sch="ODM2Annotations" tbl="ResultValueAnnotations" x="1198" y="414"/>
     <TbGl bkCl="ffff9999" sch="ODM2Core" tbl="SamplingFeatures" x="135" y="48"/>
     <TbGl bkCl="ffff9999" sch="ODM2Core" tbl="Actions" x="416" y="48"/>
@@ -2667,48 +2813,6 @@ in "PetDBSchema-Redesign-26.png"</Note>
     <Zones>
       <Zone bkCl="ffece9d8" h="568" nm="Observations" w="294" x="547" y="173"/>
     </Zones>
-  </Dgm>
-  <Dgm nm="ODM2CountAndCategoricalResult">
-    <RnCf ClkAct="true" FtSz="11" lkStgy="OffsetDirect" zm="1.0">
-      <VbCfg>
-        <Fg ky="Auto Number" vl="0"/>
-        <Fg ky="Check" vl="0"/>
-        <Fg ky="Comment" vl="0"/>
-        <Fg ky="Data Type" vl="0"/>
-        <Fg ky="Default" vl="0"/>
-        <Fg ky="ENUM Values" vl="0"/>
-        <Fg ky="Length" vl="0"/>
-        <Fg ky="Name" vl="1"/>
-        <Fg ky="Nullable" vl="0"/>
-        <Fg ky="Schema Name" vl="1"/>
-        <Fg ky="Signed" vl="0"/>
-      </VbCfg>
-    </RnCf>
-    <DiaProps>
-      <Show AllCols="1" FkCols="0" FkNms="0" PkCols="0"/>
-      <ErNotation>DbwErNotation</ErNotation>
-      <DbTableRectangleFill>HeaderFooterFill</DbTableRectangleFill>
-      <svg path=""/>
-    </DiaProps>
-    <TbGl bkCl="ff6666ff" sch="ODM2CategoryResults" tbl="CategoricalResult" x="379" y="211"/>
-    <TbGl bkCl="ff6666ff" sch="ODM2CategoryResults" tbl="CategoricalCountValues" x="396" y="406"/>
-    <TbGl bkCl="ff6666ff" sch="ODM2Core" tbl="Results" x="45" y="155"/>
-    <FkGl bkCl="ff000000" childEdge="" nm="ODM2CategoryResults.CategoricalCountValues.fk_CategoricalCountValues_CategoricalResult" parentEdge="" positioner="">
-      <positionableLines/>
-    </FkGl>
-    <FkGl bkCl="ff000000" childEdge="" nm="ODM2CategoryResults.CategoricalResult.fk_CategoricalResult_Results" parentEdge="" positioner="">
-      <positionableLines/>
-    </FkGl>
-    <Notes>
-      <Note bkCl="ffffffe6" x="43" y="49">This covers these ResultsTypes.
-
-- CategoryObservations
-- CountObservations
-- TruthObservations
-
-</Note>
-    </Notes>
-    <Zones/>
   </Dgm>
   <Dgm nm="ODM2CV">
     <RnCf ClkAct="true" FtSz="11" lkStgy="OffsetDirect" zm="1.0">
@@ -3177,131 +3281,6 @@ similar to ExternalIdentifiers.</Note>
     <Notes/>
     <Zones/>
   </Dgm>
-  <Dgm nm="ODM2MeasurementResults">
-    <RnCf ClkAct="true" FtSz="11" lkStgy="OffsetDirect" zm="1.0">
-      <VbCfg>
-        <Fg ky="Auto Number" vl="0"/>
-        <Fg ky="Check" vl="0"/>
-        <Fg ky="Comment" vl="0"/>
-        <Fg ky="Data Type" vl="0"/>
-        <Fg ky="Default" vl="0"/>
-        <Fg ky="ENUM Values" vl="0"/>
-        <Fg ky="Length" vl="0"/>
-        <Fg ky="Name" vl="1"/>
-        <Fg ky="Nullable" vl="0"/>
-        <Fg ky="Schema Name" vl="1"/>
-        <Fg ky="Signed" vl="0"/>
-      </VbCfg>
-    </RnCf>
-    <DiaProps>
-      <Show AllCols="1" FkCols="0" FkNms="0" PkCols="0"/>
-      <ErNotation>DbwErNotation</ErNotation>
-      <DbTableRectangleFill>HeaderFooterFill</DbTableRectangleFill>
-      <svg path=""/>
-    </DiaProps>
-    <TbGl bkCl="ffff9999" sch="ODM2Core" tbl="Results" x="380" y="31"/>
-    <TbGl bkCl="ffccccff" sch="ODM2MesurementResults" tbl="MeasurementValues" x="728" y="117"/>
-    <TbGl bkCl="ffff9999" sch="ODM2Core" tbl="RelatedResults" x="674" y="33"/>
-    <TbGl bkCl="ffccccff" sch="ODM2MesurementResults" tbl="MeasurementCoverages" x="494" y="325"/>
-    <TbGl bkCl="ffccffcc" sch="ODM2SamplingFeatures" tbl="SpatialReferences" x="456" y="587"/>
-    <TbGl bkCl="ff6666ff" sch="ODM2MesurementResults" tbl="MeasurementAttributes" x="921" y="315"/>
-    <TbGl bkCl="ff6666ff" sch="ODM2MesurementResults" tbl="Qualifiers" x="1148" y="165"/>
-    <TbGl bkCl="ff6666ff" sch="ODM2MesurementResults" tbl="QualifierCV" x="1340" y="339"/>
-    <FkGl bkCl="ff000000" childEdge="" nm="ODM2Core.RelatedResults.fk_RelatedResults_Results" parentEdge="" positioner="">
-      <positionableLines/>
-    </FkGl>
-    <FkGl bkCl="ff000000" childEdge="" nm="ODM2Core.RelatedResults.fk_RelatedResults_Results_AreRelated" parentEdge="" positioner="">
-      <positionableLines/>
-    </FkGl>
-    <FkGl bkCl="ff000000" childEdge="" nm="ODM2MesurementResults.MeasurementAttributes.fk_MeasurementAttributes_MeasurementValues" parentEdge="" positioner="">
-      <positionableLines/>
-    </FkGl>
-    <FkGl bkCl="ff000000" childEdge="" nm="ODM2MesurementResults.MeasurementCoverages.fk_ResultValueCoverages_Results" parentEdge="" positioner="">
-      <positionableLines/>
-    </FkGl>
-    <FkGl bkCl="ff000000" childEdge="" nm="ODM2MesurementResults.MeasurementCoverages.fk_ResultValueCoverages_SpatialReferences" parentEdge="" positioner="">
-      <positionableLines/>
-    </FkGl>
-    <FkGl bkCl="ff000000" childEdge="" nm="ODM2MesurementResults.MeasurementValues.fk_ResultValues_Results" parentEdge="" positioner="">
-      <positionableLines/>
-    </FkGl>
-    <FkGl bkCl="ff000000" childEdge="" nm="ODM2MesurementResults.Qualifiers.fk_Qualifiers_MeasurementValues" parentEdge="" positioner="">
-      <positionableLines/>
-    </FkGl>
-    <FkGl bkCl="ff000000" childEdge="" nm="ODM2MesurementResults.Qualifiers.fk_Qualifiers_QualifierCV" parentEdge="" positioner="">
-      <positionableLines/>
-    </FkGl>
-    <Notes>
-      <Note bkCl="ffffffe6" x="22" y="21">See OGC O&amp;M documentation for 
-definitions and specifications 
-regarding each of these ResultsTypes.
-- Measurements
-- CategoryObservations
-- CountObservations
-- TruthObservations
-- TemporalObservations
-- GeometryObservations
-- PointCoverages
-- TimeSeriesCoverages
-- ProfileCoverages
-   etc</Note>
-      <Note bkCl="ffffffe6" x="0" y="218">For now, the "ResultsValues" entitiy/table
-is a place is a simplification that might be 
-able to accomodate all the different ResultTypes
-defined by OGC O&amp;M.  For example:
-- CountObservations: DataValue can be a float 
-    if Results.Variable = "Count of..."
-- TruthObservation: DataValue constrained 
-    to -1.0 (False) or +1.0 (True)
-- CategoricalObservation: accomodated by
-    Results.TaxonomicIdentifierID and 
-    Results.VariableID = Classifier and
-    DataValue = -1.0 (False) or +1.0 (True)
-
-This issue is being discussed within:
-https://github.com/UCHIC/ODM2/issues/7</Note>
-      <Note bkCl="ffffffe6" x="23" y="451">TimeSeries and Coverages can include:
-- CountObservations: DataValue can be a float 
-    if Results.Variable = "Count of..."
-- TruthObservation: DataValue constrained 
-    to -1.0 (False) or +1.0 (True)
-
-But presently there can only be 
-one CategoricalObservation per Result.
-</Note>
-      <Note bkCl="ffffffe6" x="1104" y="391">X, Y &amp; Z values, units and 
-dimension descriptions are 
-all Nullable, but at least one 
-dimension needs to be used.
-but we can't proscribe if it is 
-X or Z for instance.</Note>
-      <Note bkCl="ffffffe6" x="985" y="467">The SpatialReference of a Coverage allows for 
-multiple coordinate systems (i.e global or local 
-reference frames), including within a microscope slide!</Note>
-      <Note bkCl="ffffffe6" x="648" y="441">A Coverage can also accomdate a Complex Result
-(i.e. Array Object) if we allow ResultTypeCV 
-to include coverages where X, Y or Z are 
-non-spatial dimensions, such as 
-frequency, wavelength, etc. </Note>
-      <Note bkCl="ffffffe6" x="826" y="541">It's useful to conceptualize Results as a catalog of values. 
-The XYZt bounding box is available from Actions and 
-SamplingFeatures. 
-
-O&amp;M ResultTime meaning: 
-"the time when the result became available".  </Note>
-      <Note bkCl="ffffffe6" x="940" y="19">Aggregation Interval and  Statistic. 
-Property of the action?
-
-Useful, but really part of action/method?</Note>
-      <Note bkCl="ffffffe6" x="316" y="277">Covers these ResultsTypes.
-- Measurements
-- CategoryObservations
-- TimeSeriesCoverages
-- ProfileCoverages
-</Note>
-    </Notes>
-    <Zones/>
-  </Dgm>
   <Dgm nm="ODM2Overview">
     <RnCf ClkAct="false" FtSz="11" lkStgy="OffsetDirect" zm="1.0">
       <VbCfg>
@@ -3343,7 +3322,7 @@ Useful, but really part of action/method?</Note>
     <TbGl bkCl="ffccffcc" sch="ODM2SamplingFeatures" tbl="Specimens" x="97" y="437"/>
     <TbGl bkCl="ffccffcc" sch="ODM2SamplingFeatures" tbl="FeatureParents" x="27" y="349"/>
     <TbGl bkCl="ffccffcc" sch="ODM2SamplingFeatures" tbl="SpatialOffsets" x="40" y="191"/>
-    <TbGl bkCl="ffccccff" sch="ODM2MesurementResults" tbl="MeasurementValues" x="1397" y="547"/>
+    <TbGl bkCl="ffccccff" sch="ODM2ResultsMeasures" tbl="MeasurementValues" x="1397" y="547"/>
     <TbGl bkCl="ffff9999" sch="ODM2Core" tbl="FeatureActions" x="625" y="214"/>
     <TbGl bkCl="ff99ffff" sch="ODM2DataQuality" tbl="DataQuality" x="1429" y="269"/>
     <TbGl bkCl="ff99ffff" sch="ODM2DataQuality" tbl="ResultsDataQuality" x="1443" y="440"/>
@@ -3490,6 +3469,249 @@ Useful, but really part of action/method?</Note>
     </Notes>
     <Zones/>
   </Dgm>
+  <Dgm nm="ODM2ResultsCategorical">
+    <RnCf ClkAct="true" FtSz="11" lkStgy="OffsetDirect" zm="1.0">
+      <VbCfg>
+        <Fg ky="Auto Number" vl="0"/>
+        <Fg ky="Check" vl="0"/>
+        <Fg ky="Comment" vl="0"/>
+        <Fg ky="Data Type" vl="0"/>
+        <Fg ky="Default" vl="0"/>
+        <Fg ky="ENUM Values" vl="0"/>
+        <Fg ky="Length" vl="0"/>
+        <Fg ky="Name" vl="1"/>
+        <Fg ky="Nullable" vl="0"/>
+        <Fg ky="Schema Name" vl="1"/>
+        <Fg ky="Signed" vl="0"/>
+      </VbCfg>
+    </RnCf>
+    <DiaProps>
+      <Show AllCols="1" FkCols="1" FkNms="1" PkCols="1"/>
+      <ErNotation>DbwErNotation</ErNotation>
+      <DbTableRectangleFill>HeaderFooterFill</DbTableRectangleFill>
+      <svg path=""/>
+    </DiaProps>
+    <TbGl bkCl="ff6666ff" sch="ODM2ResultsCategorical" tbl="CategoricalResult" x="379" y="211"/>
+    <TbGl bkCl="ff6666ff" sch="ODM2ResultsCategorical" tbl="CategoricalCountValues" x="396" y="406"/>
+    <TbGl bkCl="ff6666ff" sch="ODM2Core" tbl="Results" x="45" y="155"/>
+    <FkGl bkCl="ff000000" childEdge="" nm="ODM2ResultsCategorical.CategoricalCountValues.fk_CategoricalCountValues_CategoricalResult" parentEdge="" positioner="">
+      <positionableLines/>
+    </FkGl>
+    <FkGl bkCl="ff000000" childEdge="" nm="ODM2ResultsCategorical.CategoricalResult.fk_CategoricalResult_Results" parentEdge="" positioner="">
+      <positionableLines/>
+    </FkGl>
+    <Notes>
+      <Note bkCl="ffffffe6" x="43" y="49">This covers these ResultsTypes.
+
+- CategoryObservations
+- CountObservations
+- TruthObservations
+
+</Note>
+    </Notes>
+    <Zones/>
+  </Dgm>
+  <Dgm nm="ODM2ResultsDepthProfile">
+    <RnCf ClkAct="true" FtSz="9" lkStgy="RightAngleStrategy" zm="1.0">
+      <VbCfg>
+        <Fg ky="Auto Number" vl="0"/>
+        <Fg ky="Check" vl="0"/>
+        <Fg ky="Comment" vl="0"/>
+        <Fg ky="Data Type" vl="1"/>
+        <Fg ky="Default" vl="0"/>
+        <Fg ky="ENUM Values" vl="0"/>
+        <Fg ky="Length" vl="1"/>
+        <Fg ky="Name" vl="1"/>
+        <Fg ky="Nullable" vl="0"/>
+        <Fg ky="Schema Name" vl="0"/>
+        <Fg ky="Signed" vl="0"/>
+      </VbCfg>
+    </RnCf>
+    <DiaProps>
+      <Show AllCols="1" FkCols="1" FkNms="1" PkCols="1"/>
+      <ErNotation>DbwErNotation</ErNotation>
+      <DbTableRectangleFill>HeaderFooterFill</DbTableRectangleFill>
+      <svg path=""/>
+    </DiaProps>
+    <TbGl bkCl="ff6666ff" sch="ODM2ResultsDepthProfile" tbl="ProfileResults" x="63" y="231"/>
+    <TbGl bkCl="ff6666ff" sch="ODM2ResultsDepthProfile" tbl="ProfileValues" x="80" y="534"/>
+    <TbGl bkCl="ff6666ff" sch="ODM2ResultsDepthProfile" tbl="ProfilePosition" x="576" y="557"/>
+    <FkGl bkCl="ff000000" childEdge="" nm="ODM2ResultsDepthProfile.ProfilePosition.fk_ProfilePosition_ProfileValues" parentEdge="" positioner="">
+      <positionableLines/>
+    </FkGl>
+    <FkGl bkCl="ff000000" childEdge="NORTH" nm="ODM2ResultsDepthProfile.ProfileValues.fk_ProfileValues_ProfileResults" parentEdge="SOUTH" positioner="OneLineUserLinkPositioner">
+      <positionableLines>
+        <positionableLine lineRole="SINGLE_LINE" x1="234" x2="234" y1="411" y2="517"/>
+      </positionableLines>
+    </FkGl>
+    <Notes>
+      <Note bkCl="ffffffe6" x="343" y="557">valueid=valueid
+Seems the linking might be broken in 3.1</Note>
+    </Notes>
+    <Zones/>
+  </Dgm>
+  <Dgm nm="ODM2ResultsMeasurementExtended">
+    <RnCf ClkAct="true" FtSz="11" lkStgy="OffsetDirect" zm="1.0">
+      <VbCfg>
+        <Fg ky="Auto Number" vl="0"/>
+        <Fg ky="Check" vl="0"/>
+        <Fg ky="Comment" vl="0"/>
+        <Fg ky="Data Type" vl="0"/>
+        <Fg ky="Default" vl="0"/>
+        <Fg ky="ENUM Values" vl="0"/>
+        <Fg ky="Length" vl="0"/>
+        <Fg ky="Name" vl="1"/>
+        <Fg ky="Nullable" vl="0"/>
+        <Fg ky="Schema Name" vl="1"/>
+        <Fg ky="Signed" vl="0"/>
+      </VbCfg>
+    </RnCf>
+    <DiaProps>
+      <Show AllCols="1" FkCols="1" FkNms="1" PkCols="1"/>
+      <ErNotation>DbwErNotation</ErNotation>
+      <DbTableRectangleFill>HeaderFooterFill</DbTableRectangleFill>
+      <svg path=""/>
+    </DiaProps>
+    <TbGl bkCl="ffff9999" sch="ODM2Core" tbl="Results" x="380" y="31"/>
+    <TbGl bkCl="ffccccff" sch="ODM2ResultsMeasures" tbl="MeasurementValues" x="728" y="117"/>
+    <TbGl bkCl="ffff9999" sch="ODM2Core" tbl="RelatedResults" x="674" y="33"/>
+    <TbGl bkCl="ffccccff" sch="ODM2ResultsMeasures" tbl="MeasurementResults" x="425" y="375"/>
+    <TbGl bkCl="ffccffcc" sch="ODM2SamplingFeatures" tbl="SpatialReferences" x="459" y="665"/>
+    <TbGl bkCl="ff6666ff" sch="ODM2ResultsMeasures" tbl="MeasurementAttributes" x="921" y="315"/>
+    <TbGl bkCl="ff6666ff" sch="ODM2ResultsMeasures" tbl="Qualifiers" x="1148" y="165"/>
+    <TbGl bkCl="ff6666ff" sch="ODM2ResultsMeasures" tbl="QualifierCV" x="1340" y="339"/>
+    <FkGl bkCl="ff000000" childEdge="" nm="ODM2Core.RelatedResults.fk_RelatedResults_Results" parentEdge="" positioner="">
+      <positionableLines/>
+    </FkGl>
+    <FkGl bkCl="ff000000" childEdge="" nm="ODM2Core.RelatedResults.fk_RelatedResults_Results_AreRelated" parentEdge="" positioner="">
+      <positionableLines/>
+    </FkGl>
+    <FkGl bkCl="ff000000" childEdge="" nm="ODM2ResultsMeasures.MeasurementAttributes.fk_MeasurementAttributes_MeasurementValues" parentEdge="" positioner="">
+      <positionableLines/>
+    </FkGl>
+    <FkGl bkCl="ff000000" childEdge="" nm="ODM2ResultsMeasures.MeasurementResults.fk_ResultValueCoverages_Results" parentEdge="" positioner="">
+      <positionableLines/>
+    </FkGl>
+    <FkGl bkCl="ff000000" childEdge="" nm="ODM2ResultsMeasures.MeasurementResults.fk_ResultValueCoverages_SpatialReferences" parentEdge="" positioner="">
+      <positionableLines/>
+    </FkGl>
+    <FkGl bkCl="ff000000" childEdge="" nm="ODM2ResultsMeasures.MeasurementValues.fk_ResultValues_Results" parentEdge="" positioner="">
+      <positionableLines/>
+    </FkGl>
+    <FkGl bkCl="ff000000" childEdge="" nm="ODM2ResultsMeasures.Qualifiers.fk_Qualifiers_MeasurementValues" parentEdge="" positioner="">
+      <positionableLines/>
+    </FkGl>
+    <FkGl bkCl="ff000000" childEdge="" nm="ODM2ResultsMeasures.Qualifiers.fk_Qualifiers_QualifierCV" parentEdge="" positioner="">
+      <positionableLines/>
+    </FkGl>
+    <Notes>
+      <Note bkCl="ffffffe6" x="22" y="21">See OGC O&amp;M documentation for 
+definitions and specifications 
+regarding each of these ResultsTypes.
+- Measurements
+- CategoryObservations
+- CountObservations
+- TruthObservations
+- TemporalObservations
+- GeometryObservations
+- PointCoverages
+- TimeSeriesCoverages
+- ProfileCoverages
+   etc</Note>
+      <Note bkCl="ffffffe6" x="0" y="218">For now, the "ResultsValues" entitiy/table
+is a place is a simplification that might be 
+able to accomodate all the different ResultTypes
+defined by OGC O&amp;M.  For example:
+- CountObservations: DataValue can be a float 
+    if Results.Variable = "Count of..."
+- TruthObservation: DataValue constrained 
+    to -1.0 (False) or +1.0 (True)
+- CategoricalObservation: accomodated by
+    Results.TaxonomicIdentifierID and 
+    Results.VariableID = Classifier and
+    DataValue = -1.0 (False) or +1.0 (True)
+
+This issue is being discussed within:
+https://github.com/UCHIC/ODM2/issues/7</Note>
+      <Note bkCl="ffffffe6" x="23" y="451">TimeSeries and Coverages can include:
+- CountObservations: DataValue can be a float 
+    if Results.Variable = "Count of..."
+- TruthObservation: DataValue constrained 
+    to -1.0 (False) or +1.0 (True)
+
+But presently there can only be 
+one CategoricalObservation per Result.
+</Note>
+      <Note bkCl="ffffffe6" x="1104" y="391">X, Y &amp; Z values, units and 
+dimension descriptions are 
+all Nullable, but at least one 
+dimension needs to be used.
+but we can't proscribe if it is 
+X or Z for instance.</Note>
+      <Note bkCl="ffffffe6" x="985" y="467">The SpatialReference of a Coverage allows for 
+multiple coordinate systems (i.e global or local 
+reference frames), including within a microscope slide!</Note>
+      <Note bkCl="ffffffe6" x="123" y="604">A Coverage can also accomdate a Complex Result
+(i.e. Array Object) if we allow ResultTypeCV 
+to include coverages where X, Y or Z are 
+non-spatial dimensions, such as 
+frequency, wavelength, etc. </Note>
+      <Note bkCl="ffffffe6" x="826" y="541">It's useful to conceptualize Results as a catalog of values. 
+The XYZt bounding box is available from Actions and 
+SamplingFeatures. 
+
+O&amp;M ResultTime meaning: 
+"the time when the result became available".  </Note>
+      <Note bkCl="ffffffe6" x="940" y="19">Aggregation Interval and  Statistic. 
+Property of the action?
+
+Useful, but really part of action/method?</Note>
+      <Note bkCl="ffffffe6" x="316" y="277">Covers these ResultsTypes.
+- Measurements
+- TimeSeriesCoverages
+
+</Note>
+    </Notes>
+    <Zones/>
+  </Dgm>
+  <Dgm nm="ODM2ResultsMeasurment">
+    <RnCf ClkAct="true" FtSz="9" lkStgy="RightAngleStrategy" zm="1.0">
+      <VbCfg>
+        <Fg ky="Auto Number" vl="0"/>
+        <Fg ky="Check" vl="0"/>
+        <Fg ky="Comment" vl="0"/>
+        <Fg ky="Data Type" vl="1"/>
+        <Fg ky="Default" vl="0"/>
+        <Fg ky="ENUM Values" vl="0"/>
+        <Fg ky="Length" vl="1"/>
+        <Fg ky="Name" vl="1"/>
+        <Fg ky="Nullable" vl="0"/>
+        <Fg ky="Schema Name" vl="0"/>
+        <Fg ky="Signed" vl="0"/>
+      </VbCfg>
+    </RnCf>
+    <DiaProps>
+      <Show AllCols="1" FkCols="1" FkNms="1" PkCols="1"/>
+      <ErNotation>DbwErNotation</ErNotation>
+      <DbTableRectangleFill>HeaderFooterFill</DbTableRectangleFill>
+      <svg path=""/>
+    </DiaProps>
+    <TbGl bkCl="ff6666ff" sch="ODM2Core" tbl="Results" x="91" y="116"/>
+    <TbGl bkCl="ff6666ff" sch="ODM2ResultsMeasures" tbl="MeasurementResults" x="135" y="392"/>
+    <TbGl bkCl="ff6666ff" sch="ODM2ResultsMeasures" tbl="MeasurementValues" x="140" y="650"/>
+    <FkGl bkCl="ff000000" childEdge="NORTH" nm="ODM2ResultsMeasures.MeasurementResults.fk_ResultValueCoverages_Results" parentEdge="SOUTH" positioner="OneLineUserLinkPositioner">
+      <positionableLines>
+        <positionableLine lineRole="SINGLE_LINE" x1="262" x2="262" y1="316" y2="375"/>
+      </positionableLines>
+    </FkGl>
+    <FkGl bkCl="ff000000" childEdge="NORTH" nm="ODM2ResultsMeasures.MeasurementValues.fk_ResultValues_Results" parentEdge="SOUTH" positioner="OneLineUserLinkPositioner">
+      <positionableLines>
+        <positionableLine lineRole="SINGLE_LINE" x1="271" x2="271" y1="572" y2="633"/>
+      </positionableLines>
+    </FkGl>
+    <Notes/>
+    <Zones/>
+  </Dgm>
   <Dgm nm="ODM2SamplingFeatures">
     <RnCf ClkAct="true" FtSz="11" lkStgy="OffsetDirect" zm="1.0">
       <VbCfg>
@@ -3634,18 +3856,18 @@ then  additional field are added
     </Notes>
     <Zones/>
   </Dgm>
-  <RnmMgr NxRnmId="417">
+  <RnmMgr NxRnmId="426">
     <RnmCh ObjCls="Schema" ParCls="Database" ParNme="ODM2" SupCls="" SupNme="">
       <Rnm id="1" nNm="ODM2Core" oNm="schemaA"/>
     </RnmCh>
-    <RnmCh ObjCls="Table" ParCls="Schema" ParNme="ODM2MesurementResults" SupCls="" SupNme="">
+    <RnmCh ObjCls="Table" ParCls="Schema" ParNme="ODM2ResultsMeasures" SupCls="" SupNme="">
       <Rnm id="25" nNm="Measurements" oNm="MeasurementObservations"/>
       <Rnm id="24" nNm="MeasurementObservations" oNm="Measurements"/>
       <Rnm id="23" nNm="Measurements" oNm="MeasurementValues"/>
       <Rnm id="4" nNm="MeasurementValues" oNm="Measurements1"/>
       <Rnm id="2" nNm="Measurements1" oNm="Measurements"/>
     </RnmCh>
-    <RnmCh ObjCls="Table" ParCls="Schema" ParNme="ODM2MesurementResults" SupCls="" SupNme="">
+    <RnmCh ObjCls="Table" ParCls="Schema" ParNme="ODM2ResultsMeasures" SupCls="" SupNme="">
       <Rnm id="3" nNm="Measurements" oNm="MeasurementValues"/>
     </RnmCh>
     <RnmCh ObjCls="Column" ParCls="Table" ParNme="AnalyticalInstruments" SupCls="Schema" SupNme="ODM2Samples">
@@ -3666,17 +3888,17 @@ then  additional field are added
     <RnmCh ObjCls="Column" ParCls="Table" ParNme="TimeSeriesCoverages" SupCls="Schema" SupNme="ODM2Observations">
       <Rnm id="10" nNm="IntendedObservationSpacing" oNm="IntendedSpacingValue"/>
     </RnmCh>
-    <RnmCh ObjCls="Table" ParCls="Schema" ParNme="ODM2MesurementResults" SupCls="" SupNme="">
+    <RnmCh ObjCls="Table" ParCls="Schema" ParNme="ODM2ResultsMeasures" SupCls="" SupNme="">
       <Rnm id="11" nNm="Coverages" oNm="Coverage"/>
     </RnmCh>
-    <RnmCh ObjCls="Table" ParCls="Schema" ParNme="ODM2MesurementResults" SupCls="" SupNme="">
+    <RnmCh ObjCls="Table" ParCls="Schema" ParNme="ODM2ResultsMeasures" SupCls="" SupNme="">
       <Rnm id="12" nNm="PointCoverages" oNm="PointCoverage"/>
     </RnmCh>
-    <RnmCh ObjCls="Table" ParCls="Schema" ParNme="ODM2MesurementResults" SupCls="" SupNme="">
+    <RnmCh ObjCls="Table" ParCls="Schema" ParNme="ODM2ResultsMeasures" SupCls="" SupNme="">
       <Rnm id="14" nNm="TimeSeriesCoverages" oNm="TimeSeriesCoverage"/>
       <Rnm id="13" nNm="TimeSeriesCoverage" oNm="TimeSeries"/>
     </RnmCh>
-    <RnmCh ObjCls="Table" ParCls="Schema" ParNme="ODM2MesurementResults" SupCls="" SupNme="">
+    <RnmCh ObjCls="Table" ParCls="Schema" ParNme="ODM2ResultsMeasures" SupCls="" SupNme="">
       <Rnm id="15" nNm="ProfileCoverages" oNm="Profiles"/>
     </RnmCh>
     <RnmCh ObjCls="Column" ParCls="Table" ParNme="TimeSeriesCoverages" SupCls="Schema" SupNme="ODM2Observations">
@@ -3881,6 +4103,9 @@ then  additional field are added
       <Rnm id="90" nNm="ObservationResultsSet" oNm="ObservationVersions"/>
     </RnmCh>
     <RnmCh ObjCls="Schema" ParCls="Database" ParNme="ODM2" SupCls="" SupNme="">
+      <Rnm id="421" nNm="ODM2ResultsMeasures" oNm="ODM2ResultsMesuremes"/>
+      <Rnm id="420" nNm="ODM2ResultsMesuremes" oNm="ODM2ResultsMesurement"/>
+      <Rnm id="419" nNm="ODM2ResultsMesurement" oNm="ODM2MesurementResults"/>
       <Rnm id="412" nNm="ODM2MesurementResults" oNm="ODM2Results"/>
       <Rnm id="195" nNm="ODM2Results" oNm="ODM2ResultsSets"/>
       <Rnm id="91" nNm="ODM2ResultsSets" oNm="ODM2Observations"/>
@@ -4093,7 +4318,7 @@ then  additional field are added
     <RnmCh ObjCls="Column" ParCls="Table" ParNme="Results" SupCls="Schema" SupNme="ODM2Core">
       <Rnm id="175" nNm="ResultSetUniqueIdentifier" oNm="DatasetDOI"/>
     </RnmCh>
-    <RnmCh ObjCls="Table" ParCls="Schema" ParNme="ODM2MesurementResults" SupCls="" SupNme="">
+    <RnmCh ObjCls="Table" ParCls="Schema" ParNme="ODM2ResultsMeasures" SupCls="" SupNme="">
       <Rnm id="177" nNm="RelatedResultsSets" oNm="RelatedObservations"/>
     </RnmCh>
     <RnmCh ObjCls="Column" ParCls="Table" ParNme="RelatedResults" SupCls="Schema" SupNme="ODM2ResultsSets">
@@ -4204,7 +4429,7 @@ then  additional field are added
     <RnmCh ObjCls="Table" ParCls="Schema" ParNme="ODM2Core" SupCls="" SupNme="">
       <Rnm id="225" nNm="DataSetsResults" oNm="DataSetsResultsSets"/>
     </RnmCh>
-    <RnmCh ObjCls="Table" ParCls="Schema" ParNme="ODM2MesurementResults" SupCls="" SupNme="">
+    <RnmCh ObjCls="Table" ParCls="Schema" ParNme="ODM2ResultsMeasures" SupCls="" SupNme="">
       <Rnm id="414" nNm="MeasurementValues" oNm="ResultValues"/>
       <Rnm id="274" nNm="ResultValues" oNm="Values"/>
       <Rnm id="227" nNm="Values" oNm="ProfileValues"/>
@@ -4592,17 +4817,17 @@ then  additional field are added
     <RnmCh ObjCls="Column" ParCls="Table" ParNme="MeasurementValues" SupCls="Schema" SupNme="ODM2Results">
       <Rnm id="400" nNm="DimensionTypeID" oNm="OffsetOriginID"/>
     </RnmCh>
-    <RnmCh ObjCls="Column" ParCls="Table" ParNme="MeasurementCoverages" SupCls="Schema" SupNme="ODM2Results">
+    <RnmCh ObjCls="Column" ParCls="Table" ParNme="MeasurementResults" SupCls="Schema" SupNme="ODM2Results">
       <Rnm id="401" nNm="ValueID" oNm="Id"/>
     </RnmCh>
-    <RnmCh ObjCls="Column" ParCls="Table" ParNme="MeasurementCoverages" SupCls="Schema" SupNme="ODM2Results">
+    <RnmCh ObjCls="Column" ParCls="Table" ParNme="MeasurementResults" SupCls="Schema" SupNme="ODM2Results">
       <Rnm id="402" nNm="ValueX" oNm="ValueXDimension"/>
     </RnmCh>
-    <RnmCh ObjCls="Column" ParCls="Table" ParNme="MeasurementCoverages" SupCls="Schema" SupNme="ODM2Results">
+    <RnmCh ObjCls="Column" ParCls="Table" ParNme="MeasurementResults" SupCls="Schema" SupNme="ODM2Results">
       <Rnm id="411" nNm="SpatialReferenceID" oNm="CoverageOriginID"/>
       <Rnm id="403" nNm="CoverageOriginID" oNm="CoverageOrigin"/>
     </RnmCh>
-    <RnmCh ObjCls="Table" ParCls="Schema" ParNme="ODM2MesurementResults" SupCls="" SupNme="">
+    <RnmCh ObjCls="Table" ParCls="Schema" ParNme="ODM2ResultsMeasures" SupCls="" SupNme="">
       <Rnm id="404" nNm="CoverageOrigins" oNm="OffsetOrigins"/>
     </RnmCh>
     <RnmCh ObjCls="Column" ParCls="Table" ParNme="CoverageOrigins" SupCls="Schema" SupNme="ODM2Results">
@@ -4617,14 +4842,30 @@ then  additional field are added
     <RnmCh ObjCls="Column" ParCls="Table" ParNme="CoverageTypeCV" SupCls="Schema" SupNme="ODM2Results">
       <Rnm id="408" nNm="XUnitID" oNm="XunitID"/>
     </RnmCh>
-    <RnmCh ObjCls="Table" ParCls="Schema" ParNme="ODM2MesurementResults" SupCls="" SupNme="">
+    <RnmCh ObjCls="Table" ParCls="Schema" ParNme="ODM2ResultsMeasures" SupCls="" SupNme="">
+      <Rnm id="417" nNm="MeasurementResults" oNm="MeasurementCoverages"/>
       <Rnm id="413" nNm="MeasurementCoverages" oNm="ResultValueCoverages"/>
     </RnmCh>
-    <RnmCh ObjCls="Table" ParCls="Schema" ParNme="ODM2MesurementResults" SupCls="" SupNme="">
+    <RnmCh ObjCls="Table" ParCls="Schema" ParNme="ODM2ResultsMeasures" SupCls="" SupNme="">
       <Rnm id="415" nNm="MeasurementAttributes" oNm="Attributes"/>
     </RnmCh>
-    <RnmCh ObjCls="Column" ParCls="Table" ParNme="MeasurementCoverages" SupCls="Schema" SupNme="ODM2MesurementResults">
+    <RnmCh ObjCls="Column" ParCls="Table" ParNme="MeasurementResults" SupCls="Schema" SupNme="ODM2MesurementResults">
       <Rnm id="416" nNm="AggregationStatisticCV" oNm="AggregationStatiticCV"/>
+    </RnmCh>
+    <RnmCh ObjCls="Schema" ParCls="Database" ParNme="ODM2" SupCls="" SupNme="">
+      <Rnm id="418" nNm="ODM2ResultsCategorical" oNm="ODM2CategoryResults"/>
+    </RnmCh>
+    <RnmCh ObjCls="Table" ParCls="Schema" ParNme="ODM2ResultsDepthProfile" SupCls="" SupNme="">
+      <Rnm id="422" nNm="ProfileValues" oNm="ProfileValues_dup"/>
+    </RnmCh>
+    <RnmCh ObjCls="Column" ParCls="Table" ParNme="ProfileValues" SupCls="Schema" SupNme="ODM2ResultsDepthProfile">
+      <Rnm id="423" nNm="OffsetX" oNm="X"/>
+    </RnmCh>
+    <RnmCh ObjCls="Column" ParCls="Table" ParNme="ProfilePosition" SupCls="Schema" SupNme="ODM2ResultsDepthProfile">
+      <Rnm id="424" nNm="ValueID" oNm="ValueId"/>
+    </RnmCh>
+    <RnmCh ObjCls="Column" ParCls="Table" ParNme="ProfileValues" SupCls="Schema" SupNme="ODM2ResultsDepthProfile">
+      <Rnm id="425" nNm="ValueID" oNm="profileID"/>
     </RnmCh>
   </RnmMgr>
   <DbDocOptionMgr>
@@ -4643,20 +4884,22 @@ then  additional field are added
     </BasicOptionMgr>
   </DbDocOptionMgr>
   <OpenEditors>
-    <OpenEditor ClsNm="Diagram" fqn="null.ODM2LabAnalyses" selected="0"/>
+    <OpenEditor ClsNm="Diagram" fqn="null.ODM2ResultsCategorical" selected="0"/>
+    <OpenEditor ClsNm="Diagram" fqn="null.ODM2ResultsDepthProfile" selected="1"/>
     <OpenEditor ClsNm="Diagram" fqn="null.ODM2DataQuality" selected="0"/>
-    <OpenEditor ClsNm="Diagram" fqn="null.ODM2CountAndCategoricalResult" selected="0"/>
+    <OpenEditor ClsNm="Diagram" fqn="null.ODM2ResultsMeasurment" selected="0"/>
     <OpenEditor ClsNm="Diagram" fqn="null.ODM2SamplingFeatures" selected="0"/>
-    <OpenEditor ClsNm="Diagram" fqn="null.ODM2MeasurementResults" selected="1"/>
+    <OpenEditor ClsNm="Diagram" fqn="null.ODM2LabAnalyses" selected="0"/>
+    <OpenEditor ClsNm="Diagram" fqn="null.ODM2ResultsMeasurementExtended" selected="0"/>
     <OpenEditor ClsNm="Diagram" fqn="null.ODM2Core" selected="0"/>
   </OpenEditors>
   <TreePaths>
     <TreePath/>
-    <TreePath>/Schemas (13)</TreePath>
-    <TreePath>/Diagrams (14)</TreePath>
-    <TreePath>/Diagrams (14)/ODM2CountAndCategoricalResult</TreePath>
-    <TreePath>/Diagrams (14)/ODM2CountAndCategoricalResult/Notes (1)</TreePath>
-    <TreePath>/Diagrams (14)/ODM2MeasurementResults</TreePath>
-    <TreePath>/Diagrams (14)/ODM2MeasurementResults/Notes (9)</TreePath>
+    <TreePath>/Schemas (14)</TreePath>
+    <TreePath>/Diagrams (16)</TreePath>
+    <TreePath>/Diagrams (16)/ODM2ResultsCategorical</TreePath>
+    <TreePath>/Diagrams (16)/ODM2ResultsDepthProfile</TreePath>
+    <TreePath>/Diagrams (16)/ODM2ResultsDepthProfile/Notes (1)</TreePath>
+    <TreePath>/Diagrams (16)/ODM2ResultsMeasurementExtended</TreePath>
   </TreePaths>
 </Db>
