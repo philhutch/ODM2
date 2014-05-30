@@ -571,7 +571,7 @@
         <DT arr="0" ds="Integer" en="" id="4" ln="null" sc="null" sg="1" un="0"/>
         <Cm>Primary key for a relationship table (i.e. named "Related...").</Cm>
       </Cl>
-      <Cl au="0" df="" nm="ActionID" nu="0">
+      <Cl au="0" df="" nm="ActionID" nu="1">
         <DT arr="0" ds="Integer" en="" id="4" ln="null" sc="null" sg="1" un="0"/>
         <Cm>Foreign key identifier of the Action</Cm>
       </Cl>
@@ -706,7 +706,7 @@
         <DT arr="0" ds="VarChar" en="" id="12" ln="255" sc="null" sg="1" un="0"/>
         <Cm>CV term descripting the type of sampling feature.</Cm>
       </Cl>
-      <Cl au="0" df="" nm="SamplingFeatureCode" nu="0">
+      <Cl au="0" df="" nm="SamplingFeatureCode" nu="1">
         <DT arr="0" ds="VarChar" en="" id="12" ln="50" sc="null" sg="1" un="0"/>
         <Cm>A short but meaningful text identifier for the sampling feature.</Cm>
       </Cl>
@@ -1072,7 +1072,10 @@
   <Sch Cm="Entities and attributes of equipment used to make observations (e.g., sensors and instruments)." nm="ODM2Equipment">
     <Tbl UsSo="1" nm="CalibrationActions">
       <TblOpts/>
-      <Pk ClNs="ActionID" nm="pkCalibrationActions"/>
+      <Pk ClNs="CalibrationID" nm="pkCalibrationActions"/>
+      <Cl au="0" df="" nm="CalibrationID" nu="0">
+        <DT arr="0" ds="Integer" en="" id="4" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
       <Cl au="0" df="" nm="ActionID" nu="0">
         <DT arr="0" ds="Integer" en="" id="4" ln="null" sc="null" sg="1" un="0"/>
       </Cl>
@@ -1081,6 +1084,9 @@
       </Cl>
       <Cl au="0" df="" nm="CalibrationStandardID" nu="1">
         <DT arr="0" ds="Integer" en="" id="4" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="CalibrationCheckValue" nu="1">
+        <DT arr="0" ds="Float" en="" id="6" ln="null" sc="null" sg="1" un="0"/>
       </Cl>
       <Fk deAc="3" nm="fk_CalibrationActions_Actions" prLkCl="ActionID" upAc="3">
         <PrTb mn="0" nm="Actions" oe="1" sch="ODM2Core" zr="0"/>
@@ -1148,7 +1154,10 @@
     </Tbl>
     <Tbl UsSo="1" nm="ConfigurationActions">
       <TblOpts/>
-      <Pk ClNs="ActionID" nm="pkConfigurationActions"/>
+      <Pk ClNs="ConfigurationID" nm="pkConfigurationActions"/>
+      <Cl au="0" df="" nm="ConfigurationID" nu="0">
+        <DT arr="0" ds="Integer" en="" id="4" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
       <Cl au="0" df="" nm="ActionID" nu="0">
         <DT arr="0" ds="Integer" en="" id="4" ln="null" sc="null" sg="1" un="0"/>
       </Cl>
@@ -1355,7 +1364,10 @@
     </Tbl>
     <Tbl UsSo="1" nm="MaintenanceActions">
       <TblOpts/>
-      <Pk ClNs="ActionID" nm="pkMaintenanceActions"/>
+      <Pk ClNs="MaintenanceID" nm="pkMaintenanceActions"/>
+      <Cl au="0" df="" nm="MaintenanceID" nu="0">
+        <DT arr="0" ds="Integer" en="" id="4" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
       <Cl au="0" df="" nm="ActionID" nu="0">
         <DT arr="0" ds="Integer" en="" id="4" ln="null" sc="null" sg="1" un="0"/>
       </Cl>
@@ -2731,10 +2743,6 @@
         <DT arr="0" ds="VarChar" en="" id="12" ln="255" sc="null" sg="1" un="0"/>
         <Cm>CV term that describes the type of the deployment</Cm>
       </Cl>
-      <Cl au="0" df="" nm="DeploymentDescription" nu="1">
-        <DT arr="0" ds="VarChar" en="" id="12" ln="500" sc="null" sg="1" un="0"/>
-        <Cm>A text description of the deployment</Cm>
-      </Cl>
       <Cl au="0" df="" nm="DeploymentSchematicFilePath" nu="1">
         <DT arr="0" ds="VarChar" en="" id="12" ln="255" sc="null" sg="1" un="0"/>
         <Cm>File path of of a file containing a schematic of the deployment.</Cm>
@@ -2831,7 +2839,7 @@
     <CustomTypes/>
   </Sch>
   <Dgm nm="Equipment+Sensors">
-    <RnCf ClkAct="false" FtSz="11" lkStgy="OffsetDirect" zm="1.0">
+    <RnCf ClkAct="true" FtSz="11" lkStgy="OffsetDirect" zm="0.75">
       <VbCfg>
         <Fg ky="Auto Number" vl="0"/>
         <Fg ky="Check" vl="0"/>
@@ -2852,29 +2860,29 @@
       <svg path=""/>
     </DiaProps>
     <TbGl bkCl="fffb85e0" sch="ODM2Sensors" tbl="DataloggerFiles" x="190" y="470"/>
-    <TbGl bkCl="fffb85e0" sch="ODM2Sensors" tbl="DeploymentActions" x="259" y="661"/>
-    <TbGl bkCl="ffff9999" sch="ODM2Core" tbl="Actions" x="560" y="762"/>
-    <TbGl bkCl="ffff9999" sch="ODM2Core" tbl="Results" x="870" y="842"/>
+    <TbGl bkCl="fffb85e0" sch="ODM2Sensors" tbl="DeploymentActions" x="293" y="663"/>
+    <TbGl bkCl="ffff9999" sch="ODM2Core" tbl="Actions" x="585" y="788"/>
+    <TbGl bkCl="ffff9999" sch="ODM2Core" tbl="Results" x="883" y="1016"/>
     <TbGl bkCl="fffad28d" sch="ODM2Equipment" tbl="Equipment" x="816" y="166"/>
-    <TbGl bkCl="fffb85e0" sch="ODM2Sensors" tbl="SiteVisitActions" x="196" y="778"/>
-    <TbGl bkCl="ffff9999" sch="ODM2Core" tbl="FeatureActions" x="629" y="942"/>
-    <TbGl bkCl="ffff9999" sch="ODM2Core" tbl="RelatedActions" x="399" y="1020"/>
+    <TbGl bkCl="fffb85e0" sch="ODM2Sensors" tbl="SiteVisitActions" x="189" y="769"/>
+    <TbGl bkCl="ffff9999" sch="ODM2Core" tbl="FeatureActions" x="626" y="971"/>
+    <TbGl bkCl="ffff9999" sch="ODM2Core" tbl="RelatedActions" x="410" y="1038"/>
     <TbGl bkCl="fffb85e0" sch="ODM2Sensors" tbl="DeploymentMeasuredVariables" x="478" y="406"/>
     <TbGl bkCl="fffb85e0" sch="ODM2Sensors" tbl="DataloggerProgramFiles" x="161" y="326"/>
-    <TbGl bkCl="fffad28d" sch="ODM2Equipment" tbl="EquipmentActions" x="564" y="666"/>
+    <TbGl bkCl="fffad28d" sch="ODM2Equipment" tbl="EquipmentActions" x="573" y="662"/>
     <TbGl bkCl="fffad28d" sch="ODM2Equipment" tbl="EquipmentModels" x="1139" y="218"/>
     <TbGl bkCl="fffad28d" sch="ODM2Equipment" tbl="InstrumentOutputVariables" x="937" y="432"/>
-    <TbGl bkCl="ffff9999" sch="ODM2Core" tbl="Variables" x="1174" y="858"/>
+    <TbGl bkCl="ffff9999" sch="ODM2Core" tbl="Variables" x="1173" y="949"/>
     <TbGl bkCl="fffad28d" sch="ODM2Equipment" tbl="RelatedEquipment" x="1140" y="138"/>
-    <TbGl bkCl="fffb85e0" sch="ODM2Equipment" tbl="MaintenanceActions" x="194" y="858"/>
-    <TbGl bkCl="fffad28d" sch="ODM2Equipment" tbl="CalibrationActions" x="930" y="743"/>
-    <TbGl bkCl="fffad28d" sch="ODM2Equipment" tbl="CalibrationActionsStandards" x="1250" y="742"/>
-    <TbGl bkCl="fffb85e0" sch="ODM2Equipment" tbl="ConfigurationActions" x="286" y="956"/>
+    <TbGl bkCl="fffad28d" sch="ODM2Equipment" tbl="MaintenanceActions" x="212" y="853"/>
+    <TbGl bkCl="fffad28d" sch="ODM2Equipment" tbl="CalibrationActions" x="922" y="743"/>
+    <TbGl bkCl="fffad28d" sch="ODM2Equipment" tbl="CalibrationActionsStandards" x="1236" y="704"/>
+    <TbGl bkCl="fffad28d" sch="ODM2Equipment" tbl="ConfigurationActions" x="301" y="959"/>
     <TbGl bkCl="fffad28d" sch="ODM2Equipment" tbl="CalibrationEquations" x="924" y="632"/>
-    <TbGl bkCl="ff99ffff" sch="ODM2DataQuality" tbl="ReferenceMaterials" x="1358" y="1159"/>
-    <TbGl bkCl="ff99ffff" sch="ODM2DataQuality" tbl="ReferenceMaterialValues" x="1157" y="1014"/>
-    <TbGl bkCl="ffff9999" sch="ODM2Core" tbl="People" x="534" y="265"/>
-    <TbGl bkCl="ffff9999" sch="ODM2Core" tbl="SamplingFeatures" x="621" y="1087"/>
+    <TbGl bkCl="ff99ffff" sch="ODM2DataQuality" tbl="ReferenceMaterials" x="1244" y="789"/>
+    <TbGl bkCl="ff99ffff" sch="ODM2DataQuality" tbl="ReferenceMaterialValues" x="1246" y="1093"/>
+    <TbGl bkCl="ffff9999" sch="ODM2Core" tbl="People" x="542" y="278"/>
+    <TbGl bkCl="ffff9999" sch="ODM2Core" tbl="SamplingFeatures" x="885" y="860"/>
     <FkGl bkCl="ff000000" nm="ODM2Core.FeatureActions.fk_FeatureActions_Actions"/>
     <FkGl bkCl="ff000000" nm="ODM2Core.FeatureActions.fk_FeatureActions_SamplingFeatures"/>
     <FkGl bkCl="ff000000" nm="ODM2Core.RelatedActions.fk_RelatedActions_Actions"/>
@@ -2908,9 +2916,9 @@
     <FkGl bkCl="ff000000" nm="ODM2Sensors.SiteVisitActions.fk_SiteVisitActions_Actions"/>
     <Notes/>
     <Zones>
-      <Zone bkCl="ffd7c76f" h="500" nm=" " w="577" x="1150" y="741"/>
-      <Zone bkCl="ff7e9675" h="664" nm="Action Information" w="480" x="181" y="632"/>
-      <Zone bkCl="ffd7c76f" h="741" nm="Calibration Information" w="216" x="909" y="606"/>
+      <Zone bkCl="ffd7c76f" h="359" nm=" " w="496" x="1217" y="741"/>
+      <Zone bkCl="ff7e9675" h="664" nm="Action Information" w="508" x="181" y="632"/>
+      <Zone bkCl="ffd7c76f" h="667" nm="Calibration Information" w="242" x="909" y="606"/>
       <Zone bkCl="ffaf9177" h="300" nm="Datalogger Information" w="293" x="154" y="295"/>
       <Zone bkCl="ff94a0c2" h="610" nm="Equipment Information" w="240" x="802" y="125"/>
       <Zone bkCl="ff928a96" h="814" nm="Variable Information" w="214" x="461" y="376"/>
@@ -4797,11 +4805,11 @@ then  additional field are added
     </BasicOptionMgr>
   </DbDocOptionMgr>
   <OpenEditors>
-    <OpenEditor ClsNm="Diagram" fqn="null.Equipment+Sensors" selected="0"/>
-    <OpenEditor ClsNm="Diagram" fqn="null.ODM2Core" selected="1"/>
-    <OpenEditor ClsNm="Diagram" fqn="null.ODM2Sensors" selected="0"/>
-    <OpenEditor ClsNm="Diagram" fqn="null.ODM2DataQuality" selected="0"/>
+    <OpenEditor ClsNm="Diagram" fqn="null.ODM2Core" selected="0"/>
     <OpenEditor ClsNm="Diagram" fqn="null.ODM2Equipment" selected="0"/>
+    <OpenEditor ClsNm="Diagram" fqn="null.ODM2DataQuality" selected="0"/>
+    <OpenEditor ClsNm="Diagram" fqn="null.ODM2Sensors" selected="0"/>
+    <OpenEditor ClsNm="Diagram" fqn="null.Equipment+Sensors" selected="1"/>
   </OpenEditors>
   <TreePaths>
     <TreePath/>
