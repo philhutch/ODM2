@@ -3918,17 +3918,13 @@
         <DT arr="0" ds="Integer" en="" id="4" ln="null" sc="null" sg="1" un="0"/>
         <Cm>Primary key identifier</Cm>
       </Cl>
-      <Cl au="0" df="" nm="ActionID" nu="0">
+      <Cl au="0" df="" nm="DataloggerFileID" nu="0">
         <DT arr="0" ds="Integer" en="" id="4" ln="null" sc="null" sg="1" un="0"/>
-        <Cm>Foreign key identifier of the Deployment Action associated with the DeploymentMeasuredVariable</Cm>
+        <Cm>Foreign key identifier of the DataloggerFile from in which the DeploymentMeasuredVariable is recorded</Cm>
       </Cl>
       <Cl au="0" df="" nm="InstrumentOutputVariableID" nu="0">
         <DT arr="0" ds="Integer" en="" id="4" ln="null" sc="null" sg="1" un="0"/>
         <Cm>Foreign key identifier of the InstrumentOutputVariable that is the DeploymentMeasuredVariable</Cm>
-      </Cl>
-      <Cl au="0" df="" nm="DataloggerFileID" nu="0">
-        <DT arr="0" ds="Integer" en="" id="4" ln="null" sc="null" sg="1" un="0"/>
-        <Cm>Foreign key identifier of the DataloggerFile from in which the DeploymentMeasuredVariable is recorded</Cm>
       </Cl>
       <Cl au="0" df="" nm="ColumnLabel" nu="1">
         <DT arr="0" ds="VarChar" en="" id="12" ln="50" sc="null" sg="1" un="0"/>
@@ -3967,11 +3963,6 @@
         <CdTb mn="1" nm="DataloggerFileColumns" oe="0" sch="ODM2Sensors" zr="1"/>
         <ClPr cdCl="DataloggerFileID" prCl="DataLoggerFileID"/>
       </Fk>
-      <Fk deAc="3" nm="fk_DeploymentMeasuredVariables_DeploymentActions" prLkCl="ActionID" upAc="3">
-        <PrTb mn="0" nm="DeploymentActions" oe="1" sch="ODM2Sensors" zr="0"/>
-        <CdTb mn="1" nm="DataloggerFileColumns" oe="0" sch="ODM2Sensors" zr="1"/>
-        <ClPr cdCl="ActionID" prCl="ActionID"/>
-      </Fk>
       <Fk deAc="3" nm="fk_DeploymentMeasuredVariables_InstrumentOutputVariables" prLkCl="InstrumentOutputVariableID" upAc="3">
         <PrTb mn="0" nm="InstrumentOutputVariables" oe="1" sch="ODM2Equipment" zr="0"/>
         <CdTb mn="1" nm="DataloggerFileColumns" oe="0" sch="ODM2Sensors" zr="1"/>
@@ -3994,9 +3985,12 @@
       <Cm>Destibes datalogger files created by a deployment action</Cm>
       <TblOpts/>
       <Pk ClNs="DataLoggerFileID" nm="pkDataLoggerFiles"/>
-      <Cl au="1" df="" nm="DataLoggerFileID" nu="0">
+      <Cl au="1" df="" nm="DataLoggerFileID" nu="1">
         <DT arr="0" ds="Integer" en="" id="4" ln="null" sc="null" sg="1" un="0"/>
         <Cm>Unique identifier for the datalogger file</Cm>
+      </Cl>
+      <Cl au="0" df="" nm="ActionID" nu="0">
+        <DT arr="0" ds="Integer" en="" id="4" ln="null" sc="null" sg="1" un="0"/>
       </Cl>
       <Cl au="0" df="" nm="ProgramID" nu="0">
         <DT arr="0" ds="Integer" en="" id="4" ln="null" sc="null" sg="1" un="0"/>
@@ -4018,6 +4012,11 @@
         <PrTb mn="0" nm="DataloggerProgramFiles" oe="1" sch="ODM2Sensors" zr="0"/>
         <CdTb mn="1" nm="DataLoggerFiles" oe="0" sch="ODM2Sensors" zr="1"/>
         <ClPr cdCl="ProgramID" prCl="ProgramID"/>
+      </Fk>
+      <Fk deAc="3" nm="fk_DataLoggerFiles_DeploymentActions" prLkCl="ActionID" upAc="3">
+        <PrTb mn="0" nm="DeploymentActions" oe="1" sch="ODM2Sensors" zr="0"/>
+        <CdTb mn="1" nm="DataLoggerFiles" oe="0" sch="ODM2Sensors" zr="1"/>
+        <ClPr cdCl="ActionID" prCl="ActionID"/>
       </Fk>
       <UniqueConstraints/>
       <SchTrHis>
@@ -4887,7 +4886,7 @@ Sampling Model: https://www.seegrid.csiro.au/wiki/AppSchemas/ObservationsAndSamp
     <Zones/>
   </Dgm>
   <Dgm nm="ODM2Sensors">
-    <RnCf ClkAct="true" FtSz="11" lkStgy="OffsetDirect" zm="0.75">
+    <RnCf ClkAct="true" FtSz="11" lkStgy="OffsetDirect" zm="1.0">
       <VbCfg>
         <Fg ky="Auto Number" vl="0"/>
         <Fg ky="Check" vl="0"/>
@@ -4907,27 +4906,27 @@ Sampling Model: https://www.seegrid.csiro.au/wiki/AppSchemas/ObservationsAndSamp
       <ErNotation>DbwErNotation</ErNotation>
       <svg path=""/>
     </DiaProps>
-    <TbGl bkCl="fffb85e0" sch="ODM2Sensors" tbl="DataLoggerFiles" x="569" y="1309"/>
-    <TbGl bkCl="fffb85e0" sch="ODM2Sensors" tbl="DeploymentActions" x="1054" y="1151"/>
+    <TbGl bkCl="fffb85e0" sch="ODM2Sensors" tbl="DataLoggerFiles" x="643" y="1026"/>
+    <TbGl bkCl="fffb85e0" sch="ODM2Sensors" tbl="DeploymentActions" x="947" y="1044"/>
     <TbGl bkCl="ffff9999" sch="ODM2Core" tbl="Actions" x="1279" y="923"/>
     <TbGl bkCl="ffff9999" sch="ODM2Core" tbl="Results" x="1842" y="1015"/>
     <TbGl bkCl="fffad28d" sch="ODM2Equipment" tbl="Equipment" x="252" y="260"/>
     <TbGl bkCl="ffff9999" sch="ODM2Core" tbl="FeatureActions" x="1578" y="1039"/>
-    <TbGl bkCl="fffb85e0" sch="ODM2Sensors" tbl="DataloggerProgramFiles" x="65" y="1291"/>
-    <TbGl bkCl="fffb85e0" sch="ODM2Sensors" tbl="DataloggerFileColumns" x="914" y="1267"/>
+    <TbGl bkCl="fffb85e0" sch="ODM2Sensors" tbl="DataloggerProgramFiles" x="615" y="1181"/>
+    <TbGl bkCl="fffb85e0" sch="ODM2Sensors" tbl="DataloggerFileColumns" x="269" y="996"/>
     <TbGl bkCl="fffad28d" sch="ODM2Equipment" tbl="InstrumentOutputVariables" x="176" y="756"/>
     <TbGl bkCl="fffad28d" sch="ODM2Equipment" tbl="EquipmentModels" x="221" y="577"/>
-    <TbGl bkCl="fffad28d" sch="ODM2Equipment" tbl="EquipmentActions" x="1154" y="702"/>
+    <TbGl bkCl="fffad28d" sch="ODM2Equipment" tbl="EquipmentActions" x="1147" y="707"/>
     <TbGl bkCl="fffad28d" sch="ODM2Equipment" tbl="CalibrationActions" x="645" y="863"/>
-    <TbGl bkCl="ffff9999" sch="ODM2Core" tbl="Variables" x="2142" y="817"/>
+    <TbGl bkCl="ffff9999" sch="ODM2Core" tbl="Variables" x="1841" y="725"/>
     <TbGl bkCl="ff99ffff" sch="ODM2DataQuality" tbl="ReferenceMaterials" x="813" y="276"/>
     <TbGl bkCl="ff99ffff" sch="ODM2DataQuality" tbl="ReferenceMaterialValues" x="834" y="98"/>
     <TbGl bkCl="fffad28d" sch="ODM2Equipment" tbl="RelatedEquipment" x="247" y="83"/>
     <TbGl bkCl="fffad28d" sch="ODM2Equipment" tbl="CalibrationStandards" x="824" y="684"/>
-    <TbGl bkCl="fffad28d" sch="ODM2Equipment" tbl="MaintenanceActions" x="1396" y="1233"/>
+    <TbGl bkCl="fffad28d" sch="ODM2Equipment" tbl="MaintenanceActions" x="1416" y="1175"/>
     <TbGl bkCl="fffad28d" sch="ODM2Equipment" tbl="CalibrationReferenceEquipment" x="513" y="574"/>
-    <TbGl bkCl="ffff9999" sch="ODM2Core" tbl="SamplingFeatures" x="1570" y="805"/>
-    <TbGl bkCl="ffff9999" sch="ODM2Core" tbl="RelatedActions" x="921" y="1015"/>
+    <TbGl bkCl="ffff9999" sch="ODM2Core" tbl="SamplingFeatures" x="1553" y="841"/>
+    <TbGl bkCl="ffff9999" sch="ODM2Core" tbl="RelatedActions" x="1132" y="1175"/>
     <FkGl bkCl="ff000000" nm="ODM2Core.FeatureActions.fk_FeatureActions_Actions"/>
     <FkGl bkCl="ff000000" nm="ODM2Core.FeatureActions.fk_FeatureActions_SamplingFeatures"/>
     <FkGl bkCl="ff000000" nm="ODM2Core.RelatedActions.fk_RelatedActions_Actions"/>
@@ -4952,9 +4951,9 @@ Sampling Model: https://www.seegrid.csiro.au/wiki/AppSchemas/ObservationsAndSamp
     <FkGl bkCl="ff000000" nm="ODM2Equipment.RelatedEquipment.fk_RelatedEquipment_Equipment"/>
     <FkGl bkCl="ff000000" nm="ODM2Equipment.RelatedEquipment.fk_RelatedEquipment_Equipment_AreRelated"/>
     <FkGl bkCl="ff000000" nm="ODM2Sensors.DataloggerFileColumns.fk_DeploymentMeasuredVariables_DataLoggerFiles"/>
-    <FkGl bkCl="ff000000" nm="ODM2Sensors.DataloggerFileColumns.fk_DeploymentMeasuredVariables_DeploymentActions"/>
     <FkGl bkCl="ff000000" nm="ODM2Sensors.DataloggerFileColumns.fk_DeploymentMeasuredVariables_InstrumentOutputVariables"/>
     <FkGl bkCl="ff000000" nm="ODM2Sensors.DataLoggerFiles.fk_DataLoggerFiles_DataloggerProgramFiles"/>
+    <FkGl bkCl="ff000000" nm="ODM2Sensors.DataLoggerFiles.fk_DataLoggerFiles_DeploymentActions"/>
     <FkGl bkCl="ff000000" nm="ODM2Sensors.DeploymentActions.fk_DeploymentActions_Actions"/>
     <Notes/>
     <Zones/>
