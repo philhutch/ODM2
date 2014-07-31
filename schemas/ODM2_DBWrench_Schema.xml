@@ -1619,34 +1619,6 @@
       <UniqueConstraints/>
       <SchTrHis/>
     </Tbl>
-    <Tbl UsSo="1" nm="EquipmentActions">
-      <TblOpts/>
-      <Pk ClNs="BridgeID" nm="pkEquipmentActions"/>
-      <Cl au="1" df="" nm="BridgeID" nu="0">
-        <DT arr="0" ds="Integer" en="" id="4" ln="null" sc="null" sg="1" un="0"/>
-        <Cm>Primary key for a bridge table, enabling many-to-many joins.</Cm>
-      </Cl>
-      <Cl au="0" df="" nm="ActionID" nu="0">
-        <DT arr="0" ds="Integer" en="" id="4" ln="null" sc="null" sg="1" un="0"/>
-        <Cm>Foreign key identifier of the Action</Cm>
-      </Cl>
-      <Cl au="0" df="" nm="EquipmentID" nu="0">
-        <DT arr="0" ds="Integer" en="" id="4" ln="null" sc="null" sg="1" un="0"/>
-        <Cm>Foreign key identifier of the Equipment entity associated with the Action</Cm>
-      </Cl>
-      <Fk deAc="3" nm="fk_EquipmentActions_Actions" prLkCl="ActionID" upAc="3">
-        <PrTb mn="0" nm="Actions" oe="1" sch="ODM2Core" zr="0"/>
-        <CdTb mn="1" nm="EquipmentActions" oe="0" sch="ODM2Equipment" zr="1"/>
-        <ClPr cdCl="ActionID" prCl="ActionID"/>
-      </Fk>
-      <Fk deAc="3" nm="fk_EquipmentActions_Equipment" prLkCl="EquipmentID" upAc="3">
-        <PrTb mn="0" nm="Equipment" oe="1" sch="ODM2Equipment" zr="0"/>
-        <CdTb mn="1" nm="EquipmentActions" oe="0" sch="ODM2Equipment" zr="1"/>
-        <ClPr cdCl="EquipmentID" prCl="EquipmentID"/>
-      </Fk>
-      <UniqueConstraints/>
-      <SchTrHis/>
-    </Tbl>
     <Tbl UsSo="1" nm="EquipmentModels">
       <Cm>Describes models of sensors, loggers, and related equipment used in making observations.</Cm>
       <TblOpts/>
@@ -1687,6 +1659,34 @@
         <PrTb mn="0" nm="Organizations" oe="1" sch="ODM2Core" zr="0"/>
         <CdTb mn="1" nm="EquipmentModels" oe="0" sch="ODM2Equipment" zr="1"/>
         <ClPr cdCl="ModelManufacturerID" prCl="OrganizationID"/>
+      </Fk>
+      <UniqueConstraints/>
+      <SchTrHis/>
+    </Tbl>
+    <Tbl UsSo="1" nm="EquipmentUsed">
+      <TblOpts/>
+      <Pk ClNs="BridgeID" nm="pkEquipmentUsed"/>
+      <Cl au="1" df="" nm="BridgeID" nu="0">
+        <DT arr="0" ds="Integer" en="" id="4" ln="null" sc="null" sg="1" un="0"/>
+        <Cm>Primary key for a bridge table, enabling many-to-many joins.</Cm>
+      </Cl>
+      <Cl au="0" df="" nm="ActionID" nu="0">
+        <DT arr="0" ds="Integer" en="" id="4" ln="null" sc="null" sg="1" un="0"/>
+        <Cm>Foreign key identifier of the Action</Cm>
+      </Cl>
+      <Cl au="0" df="" nm="EquipmentID" nu="0">
+        <DT arr="0" ds="Integer" en="" id="4" ln="null" sc="null" sg="1" un="0"/>
+        <Cm>Foreign key identifier of the Equipment entity associated with the Action</Cm>
+      </Cl>
+      <Fk deAc="3" nm="fk_EquipmentActions_Actions" prLkCl="ActionID" upAc="3">
+        <PrTb mn="0" nm="Actions" oe="1" sch="ODM2Core" zr="0"/>
+        <CdTb mn="1" nm="EquipmentUsed" oe="0" sch="ODM2Equipment" zr="1"/>
+        <ClPr cdCl="ActionID" prCl="ActionID"/>
+      </Fk>
+      <Fk deAc="3" nm="fk_EquipmentActions_Equipment" prLkCl="EquipmentID" upAc="3">
+        <PrTb mn="0" nm="Equipment" oe="1" sch="ODM2Equipment" zr="0"/>
+        <CdTb mn="1" nm="EquipmentUsed" oe="0" sch="ODM2Equipment" zr="1"/>
+        <ClPr cdCl="EquipmentID" prCl="EquipmentID"/>
       </Fk>
       <UniqueConstraints/>
       <SchTrHis/>
@@ -4379,7 +4379,7 @@ VerticalDatumCV</Note>
     <TbGl bkCl="fffad28d" sch="ODM2Equipment" tbl="DataloggerFileColumns" x="1166" y="739"/>
     <TbGl bkCl="fffad28d" sch="ODM2Equipment" tbl="InstrumentOutputVariables" x="712" y="36"/>
     <TbGl bkCl="fffad28d" sch="ODM2Equipment" tbl="EquipmentModels" x="346" y="26"/>
-    <TbGl bkCl="fffad28d" sch="ODM2Equipment" tbl="EquipmentActions" x="349" y="526"/>
+    <TbGl bkCl="fffad28d" sch="ODM2Equipment" tbl="EquipmentUsed" x="349" y="526"/>
     <TbGl bkCl="fffad28d" sch="ODM2Equipment" tbl="CalibrationActions" x="503" y="187"/>
     <TbGl bkCl="ff99ffff" sch="ODM2DataQuality" tbl="ReferenceMaterials" x="1145" y="124"/>
     <TbGl bkCl="ff99ffff" sch="ODM2DataQuality" tbl="ReferenceMaterialValues" x="1193" y="324"/>
@@ -4408,8 +4408,8 @@ VerticalDatumCV</Note>
     <FkGl bkCl="ff000000" nm="ODM2Equipment.DataloggerFileColumns.fk_DataloggerFileColumns_Results"/>
     <FkGl bkCl="ff000000" nm="ODM2Equipment.DataLoggerFiles.fk_DataLoggerFiles_DataloggerProgramFiles"/>
     <FkGl bkCl="ff000000" nm="ODM2Equipment.Equipment.fk_Equipment_EquipmentModels"/>
-    <FkGl bkCl="ff000000" nm="ODM2Equipment.EquipmentActions.fk_EquipmentActions_Actions"/>
-    <FkGl bkCl="ff000000" nm="ODM2Equipment.EquipmentActions.fk_EquipmentActions_Equipment"/>
+    <FkGl bkCl="ff000000" nm="ODM2Equipment.EquipmentUsed.fk_EquipmentActions_Actions"/>
+    <FkGl bkCl="ff000000" nm="ODM2Equipment.EquipmentUsed.fk_EquipmentActions_Equipment"/>
     <FkGl bkCl="ff000000" nm="ODM2Equipment.InstrumentOutputVariables.fk_InstrumentOutputVariables_EquipmentModels"/>
     <FkGl bkCl="ff000000" nm="ODM2Equipment.InstrumentOutputVariables.fk_InstrumentOutputVariables_Methods"/>
     <FkGl bkCl="ff000000" nm="ODM2Equipment.MaintenanceActions.fk_MaintenanceActions_Actions"/>
@@ -4560,7 +4560,7 @@ similar to ExternalIdentifiers.</Note>
     <TbGl bkCl="ffff9999" sch="ODM2Core" tbl="Actions" x="582" y="273"/>
     <TbGl bkCl="ffff9999" sch="ODM2Core" tbl="FeatureActions" x="498" y="544"/>
     <TbGl bkCl="ffd7cdb8" sch="ODM2LabAnalyses" tbl="Directives" x="312" y="353"/>
-    <TbGl bkCl="fffad28d" sch="ODM2Equipment" tbl="EquipmentActions" x="276" y="271"/>
+    <TbGl bkCl="fffad28d" sch="ODM2Equipment" tbl="EquipmentUsed" x="276" y="271"/>
     <TbGl bkCl="ffd7cdb8" sch="ODM2LabAnalyses" tbl="ActionDirectives" x="371" y="443"/>
     <TbGl bkCl="ffd7cdb8" sch="ODM2LabAnalyses" tbl="SpecimenBatchPostions" x="440" y="674"/>
     <TbGl bkCl="ff99ffff" sch="ODM2DataQuality" tbl="ReferenceMaterials" x="322" y="763"/>
@@ -4569,8 +4569,8 @@ similar to ExternalIdentifiers.</Note>
     <FkGl bkCl="ff000000" nm="ODM2Core.FeatureActions.fk_FeatureActions_SamplingFeatures"/>
     <FkGl bkCl="ff000000" nm="ODM2Core.Results.fk_Results_FeatureActions"/>
     <FkGl bkCl="ff000000" nm="ODM2DataQuality.ReferenceMaterials.fk_ReferenceMaterials_SamplingFeatures"/>
-    <FkGl bkCl="ff000000" nm="ODM2Equipment.EquipmentActions.fk_EquipmentActions_Actions"/>
-    <FkGl bkCl="ff000000" nm="ODM2Equipment.EquipmentActions.fk_EquipmentActions_Equipment"/>
+    <FkGl bkCl="ff000000" nm="ODM2Equipment.EquipmentUsed.fk_EquipmentActions_Actions"/>
+    <FkGl bkCl="ff000000" nm="ODM2Equipment.EquipmentUsed.fk_EquipmentActions_Equipment"/>
     <FkGl bkCl="ff000000" nm="ODM2LabAnalyses.ActionDirectives.fk_ActionDirectives_Actions"/>
     <FkGl bkCl="ff000000" nm="ODM2LabAnalyses.ActionDirectives.fk_ActionDirectives_Directives"/>
     <FkGl bkCl="ff000000" nm="ODM2LabAnalyses.SpecimenBatchPostions.fk_SpecimenBatchPostions_FeatureActions"/>
@@ -4870,7 +4870,7 @@ Sampling Model: https://www.seegrid.csiro.au/wiki/AppSchemas/ObservationsAndSamp
     </Notes>
     <Zones/>
   </Dgm>
-  <RnmMgr NxRnmId="481">
+  <RnmMgr NxRnmId="482">
     <RnmCh ObjCls="Schema" ParCls="Database" ParNme="ODM2" SupCls="" SupNme="">
       <Rnm id="1" nNm="ODM2Core" oNm="schemaA"/>
     </RnmCh>
@@ -5800,7 +5800,7 @@ Sampling Model: https://www.seegrid.csiro.au/wiki/AppSchemas/ObservationsAndSamp
     <RnmCh ObjCls="Column" ParCls="Table" ParNme="CitationExternalIdentifiers" SupCls="Schema" SupNme="ODM2ExternalIdentifiers">
       <Rnm id="387" nNm="CitationID" oNm="Id"/>
     </RnmCh>
-    <RnmCh ObjCls="Column" ParCls="Table" ParNme="EquipmentActions" SupCls="Schema" SupNme="ODM2Equipment">
+    <RnmCh ObjCls="Column" ParCls="Table" ParNme="EquipmentUsed" SupCls="Schema" SupNme="ODM2Equipment">
       <Rnm id="388" nNm="EquipentID" oNm="Id"/>
     </RnmCh>
     <RnmCh ObjCls="Schema" ParCls="Database" ParNme="ODM2" SupCls="" SupNme="">
@@ -6027,6 +6027,7 @@ Sampling Model: https://www.seegrid.csiro.au/wiki/AppSchemas/ObservationsAndSamp
       <Rnm id="476" nNm="CalibrationEquation" oNm="OutputVariableEquation"/>
     </RnmCh>
     <RnmCh ObjCls="Table" ParCls="Schema" ParNme="ODM2Equipment" SupCls="" SupNme="">
+      <Rnm id="481" nNm="EquipmentUsed" oNm="EquipmentActions"/>
       <Rnm id="478" nNm="EquipmentActions" oNm="ActionEquipment"/>
       <Rnm id="477" nNm="ActionEquipment" oNm="EquipmentActions"/>
     </RnmCh>
