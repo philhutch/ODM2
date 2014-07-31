@@ -4412,23 +4412,6 @@ VerticalDatumCV</Note>
 with multiple instrument output variables?
 We could add a bridge table OR model 
 each variable as a separate calibration.</Note>
-      <Note bkCl="ffffffe6" x="161" y="757">Equipment are often specified by ObservationActions to 
-make measurements (i.e Results).
-
-An Equipment MaintenanceAction is an ActionType that 
-does not act on SamplingFeatures or produce Results.  
-Methods distinguish Equipment Configuration, Repair, 
-Cleaning and other Equipment MaintenanceActions.
-
-An Instrument Calibration Action could produces a 
-Result from a measurement made on a ReferenceMaterial 
-Specimen.</Note>
-      <Note bkCl="ffffffe6" x="543" y="934">RETRIEVALS: A retrieval is an action just like a deployment is an action. 
-CURRENTLY DEPLOYED: To find all currently deployed equipment, 
-perform a query for any equipment for which a deployment does 
-not have an associated retrieval.
-
-</Note>
     </Notes>
     <Zones/>
   </Dgm>
