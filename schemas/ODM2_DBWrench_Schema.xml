@@ -4407,12 +4407,7 @@ VerticalDatumCV</Note>
     <FkGl bkCl="ff000000" nm="ODM2Equipment.MaintenanceActions.fk_MaintenanceActions_Actions"/>
     <FkGl bkCl="ff000000" nm="ODM2Equipment.RelatedEquipment.fk_RelatedEquipment_Equipment"/>
     <FkGl bkCl="ff000000" nm="ODM2Equipment.RelatedEquipment.fk_RelatedEquipment_Equipment_AreRelated"/>
-    <Notes>
-      <Note bkCl="ffffffe6" x="1068" y="14">Can a calibration action be associated 
-with multiple instrument output variables?
-We could add a bridge table OR model 
-each variable as a separate calibration.</Note>
-    </Notes>
+    <Notes/>
     <Zones/>
   </Dgm>
   <Dgm nm="ODM2ExtensionProperties">
