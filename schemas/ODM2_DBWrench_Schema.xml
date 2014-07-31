@@ -1687,33 +1687,6 @@
       <UniqueConstraints/>
       <SchTrHis/>
     </Tbl>
-    <Tbl UsSo="1" nm="EquipmentResults">
-      <TblOpts/>
-      <Pk ClNs="BridgeID" nm="pkEquipmentResults"/>
-      <Cl au="0" df="" nm="BridgeID" nu="0">
-        <DT arr="0" ds="Integer" en="" id="4" ln="null" sc="null" sg="1" un="0"/>
-      </Cl>
-      <Cl au="0" df="" nm="EquipmentActionID" nu="0">
-        <DT arr="0" ds="Integer" en="" id="4" ln="null" sc="null" sg="1" un="0"/>
-      </Cl>
-      <Cl au="0" df="" nm="ResultID" nu="0">
-        <DT arr="0" ds="Integer" en="" id="4" ln="null" sc="null" sg="1" un="0"/>
-      </Cl>
-      <Fk deAc="3" nm="fk_EquipmentResults_EquipmentActions" prLkCl="BridgeID" upAc="3">
-        <PrTb mn="0" nm="EquipmentActions" oe="1" sch="ODM2Equipment" zr="0"/>
-        <CdTb mn="1" nm="EquipmentResults" oe="0" sch="ODM2Equipment" zr="1"/>
-        <ClPr cdCl="EquipmentActionID" prCl="BridgeID"/>
-      </Fk>
-      <Fk deAc="3" nm="fk_EquipmentResults_Results" prLkCl="ResultID" upAc="3">
-        <PrTb mn="0" nm="Results" oe="1" sch="ODM2Core" zr="0"/>
-        <CdTb mn="1" nm="EquipmentResults" oe="0" sch="ODM2Equipment" zr="1"/>
-        <ClPr cdCl="ResultID" prCl="ResultID"/>
-      </Fk>
-      <UniqueConstraints/>
-      <SchTrHis>
-        <StPr stA="ODM2Sensors" stB="EquipmentResults"/>
-      </SchTrHis>
-    </Tbl>
     <Tbl UsSo="1" nm="InstrumentOutputVariables">
       <Cm>Information about the Variables that an instrument is capable of measuring</Cm>
       <TblOpts/>
@@ -4409,7 +4382,6 @@ VerticalDatumCV</Note>
     <TbGl bkCl="ffff9999" sch="ODM2Core" tbl="SamplingFeatures" x="916" y="315"/>
     <TbGl bkCl="ffff9999" sch="ODM2Core" tbl="RelatedActions" x="572" y="815"/>
     <TbGl bkCl="ffff9999" sch="ODM2Core" tbl="Methods" x="696" y="341"/>
-    <TbGl bkCl="fffad28d" sch="ODM2Equipment" tbl="EquipmentResults" x="771" y="500"/>
     <FkGl bkCl="ff000000" nm="ODM2Core.Actions.fk_Actions_Methods"/>
     <FkGl bkCl="ff000000" nm="ODM2Core.FeatureActions.fk_FeatureActions_Actions"/>
     <FkGl bkCl="ff000000" nm="ODM2Core.FeatureActions.fk_FeatureActions_SamplingFeatures"/>
@@ -4430,8 +4402,6 @@ VerticalDatumCV</Note>
     <FkGl bkCl="ff000000" nm="ODM2Equipment.Equipment.fk_Equipment_EquipmentModels"/>
     <FkGl bkCl="ff000000" nm="ODM2Equipment.EquipmentActions.fk_EquipmentActions_Actions"/>
     <FkGl bkCl="ff000000" nm="ODM2Equipment.EquipmentActions.fk_EquipmentActions_Equipment"/>
-    <FkGl bkCl="ff000000" nm="ODM2Equipment.EquipmentResults.fk_EquipmentResults_EquipmentActions"/>
-    <FkGl bkCl="ff000000" nm="ODM2Equipment.EquipmentResults.fk_EquipmentResults_Results"/>
     <FkGl bkCl="ff000000" nm="ODM2Equipment.InstrumentOutputVariables.fk_InstrumentOutputVariables_EquipmentModels"/>
     <FkGl bkCl="ff000000" nm="ODM2Equipment.InstrumentOutputVariables.fk_InstrumentOutputVariables_Methods"/>
     <FkGl bkCl="ff000000" nm="ODM2Equipment.MaintenanceActions.fk_MaintenanceActions_Actions"/>
@@ -6097,11 +6067,14 @@ Sampling Model: https://www.seegrid.csiro.au/wiki/AppSchemas/ObservationsAndSamp
     </BasicOptionMgr>
   </DbDocOptionMgr>
   <OpenEditors>
+    <OpenEditor ClsNm="Diagram" fqn="null.ODM2Core" selected="0"/>
     <OpenEditor ClsNm="Diagram" fqn="null.ODM2Equipment" selected="1"/>
   </OpenEditors>
   <TreePaths>
     <TreePath/>
     <TreePath>/Schemas (12)</TreePath>
+    <TreePath>/Schemas (12)/ODM2Equipment</TreePath>
+    <TreePath>/Schemas (12)/ODM2Equipment/Tables (12)</TreePath>
     <TreePath>/Diagrams (12)</TreePath>
   </TreePaths>
 </Db>
