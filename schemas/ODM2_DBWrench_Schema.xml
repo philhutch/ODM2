@@ -1414,10 +1414,14 @@
       </Cl>
       <Cl au="0" df="" nm="ResultID" nu="1">
         <DT arr="0" ds="BigInt" en="" id="-5" ln="null" sc="null" sg="1" un="0"/>
+        <Cm>Foreign key identifier for the Result with which the Datalogger file column is associated</Cm>
       </Cl>
       <Cl au="0" df="" nm="DataloggerFileID" nu="0">
         <DT arr="0" ds="Integer" en="" id="4" ln="null" sc="null" sg="1" un="0"/>
         <Cm>Foreign key identifier of the DataloggerFile from in which the DeploymentMeasuredVariable is recorded</Cm>
+      </Cl>
+      <Cl au="0" df="" nm="InstrumentOutputVariableID" nu="0">
+        <DT arr="0" ds="Integer" en="" id="4" ln="null" sc="null" sg="1" un="0"/>
       </Cl>
       <Cl au="0" df="" nm="ColumnLabel" nu="0">
         <DT arr="0" ds="VarChar" en="" id="12" ln="50" sc="null" sg="1" un="0"/>
@@ -1455,6 +1459,11 @@
         <PrTb mn="0" nm="DataLoggerFiles" oe="1" sch="ODM2Equipment" zr="0"/>
         <CdTb mn="1" nm="DataloggerFileColumns" oe="0" sch="ODM2Equipment" zr="1"/>
         <ClPr cdCl="DataloggerFileID" prCl="DataLoggerFileID"/>
+      </Fk>
+      <Fk deAc="3" nm="fk_DataloggerFileColumns_InstrumentOutputVariables" prLkCl="InstrumentOutputVariableID" upAc="3">
+        <PrTb mn="0" nm="InstrumentOutputVariables" oe="1" sch="ODM2Equipment" zr="0"/>
+        <CdTb mn="1" nm="DataloggerFileColumns" oe="0" sch="ODM2Equipment" zr="1"/>
+        <ClPr cdCl="InstrumentOutputVariableID" prCl="InstrumentOutputVariableID"/>
       </Fk>
       <Fk deAc="3" nm="fk_DataloggerFileColumns_Results" prLkCl="ResultID" upAc="3">
         <PrTb mn="0" nm="Results" oe="1" sch="ODM2Core" zr="0"/>
@@ -4350,7 +4359,7 @@ VerticalDatumCV</Note>
     <Zones/>
   </Dgm>
   <Dgm nm="ODM2Equipment">
-    <RnCf ClkAct="false" FtSz="11" lkStgy="OffsetDirect" zm="1.25">
+    <RnCf ClkAct="false" FtSz="11" lkStgy="OffsetDirect" zm="1.0">
       <VbCfg>
         <Fg ky="Auto Number" vl="0"/>
         <Fg ky="Check" vl="0"/>
@@ -4374,7 +4383,7 @@ VerticalDatumCV</Note>
     <TbGl bkCl="ffff9999" sch="ODM2Core" tbl="Actions" x="544" y="641"/>
     <TbGl bkCl="ffff9999" sch="ODM2Core" tbl="Results" x="832" y="689"/>
     <TbGl bkCl="fffad28d" sch="ODM2Equipment" tbl="Equipment" x="352" y="309"/>
-    <TbGl bkCl="ffff9999" sch="ODM2Core" tbl="FeatureActions" x="965" y="590"/>
+    <TbGl bkCl="ffff9999" sch="ODM2Core" tbl="FeatureActions" x="832" y="598"/>
     <TbGl bkCl="fffad28d" sch="ODM2Equipment" tbl="DataloggerProgramFiles" x="1152" y="472"/>
     <TbGl bkCl="fffad28d" sch="ODM2Equipment" tbl="DataloggerFileColumns" x="1166" y="739"/>
     <TbGl bkCl="fffad28d" sch="ODM2Equipment" tbl="InstrumentOutputVariables" x="712" y="36"/>
@@ -4387,9 +4396,9 @@ VerticalDatumCV</Note>
     <TbGl bkCl="fffad28d" sch="ODM2Equipment" tbl="CalibrationStandards" x="822" y="185"/>
     <TbGl bkCl="fffad28d" sch="ODM2Equipment" tbl="MaintenanceActions" x="219" y="649"/>
     <TbGl bkCl="fffad28d" sch="ODM2Equipment" tbl="CalibrationReferenceEquipment" x="56" y="193"/>
-    <TbGl bkCl="ffff9999" sch="ODM2Core" tbl="SamplingFeatures" x="916" y="315"/>
+    <TbGl bkCl="ffff9999" sch="ODM2Core" tbl="SamplingFeatures" x="811" y="430"/>
     <TbGl bkCl="ffff9999" sch="ODM2Core" tbl="RelatedActions" x="572" y="815"/>
-    <TbGl bkCl="ffff9999" sch="ODM2Core" tbl="Methods" x="696" y="341"/>
+    <TbGl bkCl="ffff9999" sch="ODM2Core" tbl="Methods" x="672" y="293"/>
     <FkGl bkCl="ff000000" nm="ODM2Core.Actions.fk_Actions_Methods"/>
     <FkGl bkCl="ff000000" nm="ODM2Core.FeatureActions.fk_FeatureActions_Actions"/>
     <FkGl bkCl="ff000000" nm="ODM2Core.FeatureActions.fk_FeatureActions_SamplingFeatures"/>
@@ -4405,6 +4414,7 @@ VerticalDatumCV</Note>
     <FkGl bkCl="ff000000" nm="ODM2Equipment.CalibrationStandards.fk_CalibrationStandards_CalibrationActions"/>
     <FkGl bkCl="ff000000" nm="ODM2Equipment.CalibrationStandards.fk_FieldCalibrationStandards_ReferenceMaterials"/>
     <FkGl bkCl="ff000000" nm="ODM2Equipment.DataloggerFileColumns.fk_DataloggerFileColumns_DataLoggerFiles"/>
+    <FkGl bkCl="ff000000" nm="ODM2Equipment.DataloggerFileColumns.fk_DataloggerFileColumns_InstrumentOutputVariables"/>
     <FkGl bkCl="ff000000" nm="ODM2Equipment.DataloggerFileColumns.fk_DataloggerFileColumns_Results"/>
     <FkGl bkCl="ff000000" nm="ODM2Equipment.DataLoggerFiles.fk_DataLoggerFiles_DataloggerProgramFiles"/>
     <FkGl bkCl="ff000000" nm="ODM2Equipment.Equipment.fk_Equipment_EquipmentModels"/>
@@ -4719,17 +4729,17 @@ similar to ExternalIdentifiers.</Note>
     <FkGl bkCl="ff000000" nm="ODM2Provenance.ResultDerivationEquations.fk_ResultDerivationEquations_DerivationEquations"/>
     <FkGl bkCl="ff000000" nm="ODM2Provenance.ResultDerivationEquations.fk_ResultDerivationEquations_Results"/>
     <Notes>
-      <Note bkCl="ffffffe6" x="24" y="720">RelationshipTypeCV:
-* isDerivedFrom
-* isNewVersionOf
-See full list used by DataCite.org at
-http://dlib.org/dlib/january11/starr/01starr.html</Note>
       <Note bkCl="ffffffe6" x="746" y="687">An ObservationAction with MethodType=ResultDerivation
 can specify which RelatedResults the new Result was
 "DerivedFrom" [=RelationshipType].
 
 The exact DerivationEquation can be specified in the
 entity of that name, if the RelatedResultSequenceNumber is specified.</Note>
+      <Note bkCl="ffffffe6" x="24" y="720">RelationshipTypeCV:
+* isDerivedFrom
+* isNewVersionOf
+See full list used by DataCite.org at
+http://dlib.org/dlib/january11/starr/01starr.html</Note>
     </Notes>
     <Zones/>
   </Dgm>
