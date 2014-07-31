@@ -4350,7 +4350,7 @@ VerticalDatumCV</Note>
     <Zones/>
   </Dgm>
   <Dgm nm="ODM2Equipment">
-    <RnCf ClkAct="false" FtSz="11" lkStgy="OffsetDirect" zm="1.25">
+    <RnCf ClkAct="false" FtSz="11" lkStgy="OffsetDirect" zm="1.0">
       <VbCfg>
         <Fg ky="Auto Number" vl="0"/>
         <Fg ky="Check" vl="0"/>
