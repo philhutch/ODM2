@@ -1324,6 +1324,7 @@
       </Cl>
       <Cl au="0" df="" nm="InstrumentOutputVariableID" nu="0">
         <DT arr="0" ds="Integer" en="" id="4" ln="null" sc="null" sg="1" un="0"/>
+        <Cm>Foreign key identifier for the variable output by the instrument that is being calibrated</Cm>
       </Cl>
       <Cl au="0" df="" nm="CalibrationEquation" nu="1">
         <DT arr="0" ds="VarChar" en="" id="12" ln="255" sc="null" sg="1" un="0"/>
@@ -1349,12 +1350,15 @@
       <Pk ClNs="BridgeID" nm="pkCalibrationReferenceEquipment"/>
       <Cl au="1" df="" nm="BridgeID" nu="0">
         <DT arr="0" ds="Integer" en="" id="4" ln="null" sc="null" sg="1" un="0"/>
+        <Cm>Primary key identifier</Cm>
       </Cl>
       <Cl au="0" df="" nm="ActionID" nu="0">
         <DT arr="0" ds="Integer" en="" id="4" ln="null" sc="null" sg="1" un="0"/>
+        <Cm>The ActionID of the Calibration Action</Cm>
       </Cl>
       <Cl au="0" df="" nm="EquipmentID" nu="0">
         <DT arr="0" ds="Integer" en="" id="4" ln="null" sc="null" sg="1" un="0"/>
+        <Cm>The EquipmentID of the Equipment used as the standard in the calibration</Cm>
       </Cl>
       <Fk deAc="3" nm="fk_CalibrationEquipment_Equipment" prLkCl="EquipmentID" upAc="3">
         <PrTb mn="0" nm="Equipment" oe="1" sch="ODM2Equipment" zr="0"/>
@@ -1792,15 +1796,19 @@
       </Cl>
       <Cl au="0" df="" nm="RelationshipStartDateTime" nu="0">
         <DT arr="0" ds="DateTime" en="" id="700" ln="null" sc="null" sg="1" un="0"/>
+        <Cm>Date and time at which the relationship began</Cm>
       </Cl>
       <Cl au="0" df="" nm="RelationshipStartDateTimeUTCOffset" nu="0">
         <DT arr="0" ds="Integer" en="" id="4" ln="null" sc="null" sg="1" un="0"/>
+        <Cm>UTCOffset for the date and time at which the relationship began</Cm>
       </Cl>
       <Cl au="0" df="" nm="RelationshipEndDateTime" nu="1">
         <DT arr="0" ds="DateTime" en="" id="700" ln="null" sc="null" sg="1" un="0"/>
+        <Cm>Date and time at which the relationship ended</Cm>
       </Cl>
       <Cl au="0" df="" nm="RelationshipEndDateTimeUTCOffset" nu="1">
         <DT arr="0" ds="Integer" en="" id="4" ln="null" sc="null" sg="1" un="0"/>
+        <Cm>UTCOffset for the date and time at which the relationship ended.</Cm>
       </Cl>
       <Fk deAc="3" nm="fk_RelatedEquipment_Equipment" prLkCl="EquipmentID" upAc="3">
         <PrTb mn="0" nm="Equipment" oe="1" sch="ODM2Equipment" zr="0"/>
@@ -6051,8 +6059,6 @@ Sampling Model: https://www.seegrid.csiro.au/wiki/AppSchemas/ObservationsAndSamp
   <TreePaths>
     <TreePath/>
     <TreePath>/Schemas (12)</TreePath>
-    <TreePath>/Schemas (12)/ODM2Equipment</TreePath>
-    <TreePath>/Schemas (12)/ODM2Equipment/Tables (12)</TreePath>
     <TreePath>/Diagrams (12)</TreePath>
   </TreePaths>
 </Db>
