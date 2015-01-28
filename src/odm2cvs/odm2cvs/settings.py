@@ -59,8 +59,16 @@ WSGI_APPLICATION = 'odm2cvs.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'sql_server.pyodbc',
+        'NAME': 'ODM2CVS',
+        'USER': 'Django',
+        'PASSWORD': 'C00lPassword!',
+        'HOST': 'hawk\mssqlserver2012',
+        'PORT': '',
+
+        'OPTIONS': {
+            'driver': 'SQL Server Native Client 11.0',
+        },
     }
 }
 
