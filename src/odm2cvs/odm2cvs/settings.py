@@ -60,6 +60,18 @@ WSGI_APPLICATION = 'odm2cvs.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'sql_server.pyodbc',
+        'NAME': 'ODM2CVS_Config',
+        'USER': 'Django',
+        'PASSWORD': 'C00lPassword!',
+        'HOST': 'hawk\mssqlserver2012',
+        'PORT': '',
+
+        'OPTIONS': {
+            'driver': 'SQL Server Native Client 11.0',
+        },
+    },
+    'control_vocabularies': {
+        'ENGINE': 'sql_server.pyodbc',
         'NAME': 'ODM2CVS',
         'USER': 'Django',
         'PASSWORD': 'C00lPassword!',
