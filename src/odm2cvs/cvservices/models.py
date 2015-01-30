@@ -9,9 +9,9 @@ class ActionType(models.Model):
     definition = models.TextField()
     category = models.TextField()
     provenance = models.TextField(blank=True)
-    provenanceuri = models.TextField(db_column='provenanceUri', blank=True)  # Field name made lowercase.
+    provenanceuri = models.TextField(db_column='provenanceUri', blank=True)
     note = models.TextField(blank=True)
-    producesresult = models.TextField(db_column='producesResult')  # Field name made lowercase.
+    producesresult = models.TextField(db_column='producesResult')
 
     class Meta:
         managed = False
@@ -19,22 +19,22 @@ class ActionType(models.Model):
 
 
 class ActionTypeRequest(models.Model):
-    requestid = models.TextField(db_column='requestId', primary_key=True)  # Field name made lowercase.
+    requestid = models.TextField(db_column='requestId', primary_key=True)
     status = models.TextField()
     term = models.ForeignKey(ActionType, db_column='term')
-    datesubmitted = models.DateField(db_column='dateSubmitted')  # Field name made lowercase.
-    datestatuschanged = models.DateField(db_column='dateStatusChanged')  # Field name made lowercase.
-    requestnotes = models.TextField(db_column='requestNotes')  # Field name made lowercase.
-    submittername = models.TextField(db_column='submitterName')  # Field name made lowercase.
-    submitteremail = models.TextField(db_column='submitterEmail', blank=True)  # Field name made lowercase.
-    requestreason = models.TextField(db_column='requestReason')  # Field name made lowercase.
+    datesubmitted = models.DateField(db_column='dateSubmitted')
+    datestatuschanged = models.DateField(db_column='dateStatusChanged')
+    requestnotes = models.TextField(db_column='requestNotes')
+    submittername = models.TextField(db_column='submitterName')
+    submitteremail = models.TextField(db_column='submitterEmail', blank=True)
+    requestreason = models.TextField(db_column='requestReason')
     name = models.TextField()
     definition = models.TextField()
     category = models.TextField()
     provenance = models.TextField(blank=True)
-    provenanceuri = models.TextField(db_column='provenanceUri', blank=True)  # Field name made lowercase.
+    provenanceuri = models.TextField(db_column='provenanceUri', blank=True)
     note = models.TextField(blank=True)
-    producesresult = models.TextField(db_column='producesResult')  # Field name made lowercase.
+    producesresult = models.TextField(db_column='producesResult')
 
     class Meta:
         managed = False
@@ -47,7 +47,7 @@ class MethodType(models.Model):
     definition = models.TextField()
     category = models.TextField()
     provenance = models.TextField(blank=True)
-    provenanceuri = models.TextField(db_column='provenanceUri', blank=True)  # Field name made lowercase.
+    provenanceuri = models.TextField(db_column='provenanceUri', blank=True)
     note = models.TextField(blank=True)
 
     class Meta:
@@ -56,20 +56,20 @@ class MethodType(models.Model):
 
 
 class MethodTypeRequest(models.Model):
-    requestid = models.TextField(db_column='requestId', primary_key=True)  # Field name made lowercase.
+    requestid = models.TextField(db_column='requestId', primary_key=True)
     status = models.TextField()
     term = models.ForeignKey(MethodType, db_column='term')
-    datesubmitted = models.DateField(db_column='dateSubmitted')  # Field name made lowercase.
-    datestatuschanged = models.DateField(db_column='dateStatusChanged')  # Field name made lowercase.
-    requestnotes = models.TextField(db_column='requestNotes')  # Field name made lowercase.
-    submittername = models.TextField(db_column='submitterName')  # Field name made lowercase.
-    submitteremail = models.TextField(db_column='submitterEmail', blank=True)  # Field name made lowercase.
-    requestreason = models.TextField(db_column='requestReason')  # Field name made lowercase.
+    datesubmitted = models.DateField(db_column='dateSubmitted')
+    datestatuschanged = models.DateField(db_column='dateStatusChanged')
+    requestnotes = models.TextField(db_column='requestNotes')
+    submittername = models.TextField(db_column='submitterName')
+    submitteremail = models.TextField(db_column='submitterEmail', blank=True)
+    requestreason = models.TextField(db_column='requestReason')
     name = models.TextField()
     definition = models.TextField()
     category = models.TextField()
     provenance = models.TextField(blank=True)
-    provenanceuri = models.TextField(db_column='provenanceUri', blank=True)  # Field name made lowercase.
+    provenanceuri = models.TextField(db_column='provenanceUri', blank=True)
     note = models.TextField(blank=True)
 
     class Meta:
@@ -83,7 +83,7 @@ class OrganizationType(models.Model):
     definition = models.TextField()
     category = models.TextField(blank=True)
     provenance = models.TextField(blank=True)
-    provenanceuri = models.TextField(db_column='provenanceUri', blank=True)  # Field name made lowercase.
+    provenanceuri = models.TextField(db_column='provenanceUri', blank=True)
     note = models.TextField(blank=True)
 
     class Meta:
@@ -92,20 +92,20 @@ class OrganizationType(models.Model):
 
 
 class OrganizationTypeRequest(models.Model):
-    requestid = models.TextField(db_column='requestId', primary_key=True)  # Field name made lowercase.
+    requestid = models.TextField(db_column='requestId', primary_key=True)
     status = models.TextField()
     term = models.ForeignKey(OrganizationType, db_column='term')
-    datesubmitted = models.DateField(db_column='dateSubmitted')  # Field name made lowercase.
-    datestatuschanged = models.DateField(db_column='dateStatusChanged')  # Field name made lowercase.
-    requestnotes = models.TextField(db_column='requestNotes')  # Field name made lowercase.
-    submittername = models.TextField(db_column='submitterName')  # Field name made lowercase.
-    submitteremail = models.TextField(db_column='submitterEmail', blank=True)  # Field name made lowercase.
-    requestreason = models.TextField(db_column='requestReason')  # Field name made lowercase.
+    datesubmitted = models.DateField(db_column='dateSubmitted')
+    datestatuschanged = models.DateField(db_column='dateStatusChanged')
+    requestnotes = models.TextField(db_column='requestNotes')
+    submittername = models.TextField(db_column='submitterName')
+    submitteremail = models.TextField(db_column='submitterEmail', blank=True)
+    requestreason = models.TextField(db_column='requestReason')
     name = models.TextField()
     definition = models.TextField()
     category = models.TextField(blank=True)
     provenance = models.TextField(blank=True)
-    provenanceuri = models.TextField(db_column='provenanceUri', blank=True)  # Field name made lowercase.
+    provenanceuri = models.TextField(db_column='provenanceUri', blank=True)
     note = models.TextField(blank=True)
 
     class Meta:
@@ -119,7 +119,7 @@ class SamplingFeatureGeotype(models.Model):
     definition = models.TextField()
     category = models.TextField()
     provenance = models.TextField(blank=True)
-    provenanceuri = models.TextField(db_column='provenanceUri', blank=True)  # Field name made lowercase.
+    provenanceuri = models.TextField(db_column='provenanceUri', blank=True)
     note = models.TextField(blank=True)
 
     class Meta:
@@ -128,20 +128,20 @@ class SamplingFeatureGeotype(models.Model):
 
 
 class SamplingFeatureGeotypeRequest(models.Model):
-    requestid = models.TextField(db_column='requestId', primary_key=True)  # Field name made lowercase.
+    requestid = models.TextField(db_column='requestId', primary_key=True)
     status = models.TextField()
     term = models.ForeignKey(SamplingFeatureGeotype, db_column='term')
-    datesubmitted = models.DateField(db_column='dateSubmitted')  # Field name made lowercase.
-    datestatuschanged = models.DateField(db_column='dateStatusChanged')  # Field name made lowercase.
-    requestnotes = models.TextField(db_column='requestNotes')  # Field name made lowercase.
-    submittername = models.TextField(db_column='submitterName')  # Field name made lowercase.
-    submitteremail = models.TextField(db_column='submitterEmail', blank=True)  # Field name made lowercase.
-    requestreason = models.TextField(db_column='requestReason')  # Field name made lowercase.
+    datesubmitted = models.DateField(db_column='dateSubmitted')
+    datestatuschanged = models.DateField(db_column='dateStatusChanged')
+    requestnotes = models.TextField(db_column='requestNotes')
+    submittername = models.TextField(db_column='submitterName')
+    submitteremail = models.TextField(db_column='submitterEmail', blank=True)
+    requestreason = models.TextField(db_column='requestReason')
     name = models.TextField()
     definition = models.TextField()
     category = models.TextField()
     provenance = models.TextField(blank=True)
-    provenanceuri = models.TextField(db_column='provenanceUri', blank=True)  # Field name made lowercase.
+    provenanceuri = models.TextField(db_column='provenanceUri', blank=True)
     note = models.TextField(blank=True)
 
     class Meta:
@@ -155,7 +155,7 @@ class SamplingFeatureType(models.Model):
     definition = models.TextField()
     category = models.TextField()
     provenance = models.TextField(blank=True)
-    provenanceuri = models.TextField(db_column='provenanceUri', blank=True)  # Field name made lowercase.
+    provenanceuri = models.TextField(db_column='provenanceUri', blank=True)
     note = models.TextField(blank=True)
 
     class Meta:
@@ -164,20 +164,20 @@ class SamplingFeatureType(models.Model):
 
 
 class SamplingFeatureTypeRequest(models.Model):
-    requestid = models.TextField(db_column='requestId', primary_key=True)  # Field name made lowercase.
+    requestid = models.TextField(db_column='requestId', primary_key=True)
     status = models.TextField()
     term = models.ForeignKey(SamplingFeatureType, db_column='term')
-    datesubmitted = models.DateField(db_column='dateSubmitted')  # Field name made lowercase.
-    datestatuschanged = models.DateField(db_column='dateStatusChanged')  # Field name made lowercase.
-    requestnotes = models.TextField(db_column='requestNotes')  # Field name made lowercase.
-    submittername = models.TextField(db_column='submitterName')  # Field name made lowercase.
-    submitteremail = models.TextField(db_column='submitterEmail', blank=True)  # Field name made lowercase.
-    requestreason = models.TextField(db_column='requestReason')  # Field name made lowercase.
+    datesubmitted = models.DateField(db_column='dateSubmitted')
+    datestatuschanged = models.DateField(db_column='dateStatusChanged')
+    requestnotes = models.TextField(db_column='requestNotes')
+    submittername = models.TextField(db_column='submitterName')
+    submitteremail = models.TextField(db_column='submitterEmail', blank=True)
+    requestreason = models.TextField(db_column='requestReason')
     name = models.TextField()
     definition = models.TextField()
     category = models.TextField()
     provenance = models.TextField(blank=True)
-    provenanceuri = models.TextField(db_column='provenanceUri', blank=True)  # Field name made lowercase.
+    provenanceuri = models.TextField(db_column='provenanceUri', blank=True)
     note = models.TextField(blank=True)
 
     class Meta:
@@ -191,7 +191,7 @@ class SiteType(models.Model):
     definition = models.TextField()
     category = models.TextField()
     provenance = models.TextField(blank=True)
-    provenanceuri = models.TextField(db_column='provenanceUri', blank=True)  # Field name made lowercase.
+    provenanceuri = models.TextField(db_column='provenanceUri', blank=True)
     note = models.TextField(blank=True)
 
     class Meta:
@@ -200,20 +200,20 @@ class SiteType(models.Model):
 
 
 class SiteTypeRequest(models.Model):
-    requestid = models.TextField(db_column='requestId', primary_key=True)  # Field name made lowercase.
+    requestid = models.TextField(db_column='requestId', primary_key=True)
     status = models.TextField()
     term = models.ForeignKey(SiteType, db_column='term')
-    datesubmitted = models.DateField(db_column='dateSubmitted')  # Field name made lowercase.
-    datestatuschanged = models.DateField(db_column='dateStatusChanged')  # Field name made lowercase.
-    requestnotes = models.TextField(db_column='requestNotes')  # Field name made lowercase.
-    submittername = models.TextField(db_column='submitterName')  # Field name made lowercase.
-    submitteremail = models.TextField(db_column='submitterEmail', blank=True)  # Field name made lowercase.
-    requestreason = models.TextField(db_column='requestReason')  # Field name made lowercase.
+    datesubmitted = models.DateField(db_column='dateSubmitted')
+    datestatuschanged = models.DateField(db_column='dateStatusChanged')
+    requestnotes = models.TextField(db_column='requestNotes')
+    submittername = models.TextField(db_column='submitterName')
+    submitteremail = models.TextField(db_column='submitterEmail', blank=True)
+    requestreason = models.TextField(db_column='requestReason')
     name = models.TextField()
     definition = models.TextField()
     category = models.TextField()
     provenance = models.TextField(blank=True)
-    provenanceuri = models.TextField(db_column='provenanceUri', blank=True)  # Field name made lowercase.
+    provenanceuri = models.TextField(db_column='provenanceUri', blank=True)
     note = models.TextField(blank=True)
 
     class Meta:
