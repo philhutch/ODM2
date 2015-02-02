@@ -36,7 +36,10 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'tastypie',
     'cvservices',
+    'cvinterface',
+    'rdfserializer'
 )
 
 MIDDLEWARE_CLASSES = (

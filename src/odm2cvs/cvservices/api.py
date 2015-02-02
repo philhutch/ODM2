@@ -1,88 +1,105 @@
+from tastypie import fields
 from tastypie.resources import ModelResource
+
+from rdfserializer.api import RdfSerializer, ModelRdfResource
 from models import ActionType, ActionTypeRequest, MethodType, MethodTypeRequest, \
     OrganizationType, OrganizationTypeRequest, SamplingFeatureGeotype, SamplingFeatureGeotypeRequest, \
     SamplingFeatureType, SamplingFeatureTypeRequest, SiteType, SiteTypeRequest
 
 
-class ActionTypeResource(ModelResource):
+class ActionTypeResource(ModelRdfResource):
+    scheme = 'actionTypeCV'
+
     class Meta:
-        queryset = ActionType.objects.all()
+        queryset = ActionType.objects.using('control_vocabularies').all()
         resource_name = 'actiontypecv'
         max_limit = 0
+        serializer = RdfSerializer()
+
 
 
 class ActionTypeRequestResource(ModelResource):
     class Meta:
-        queryset = ActionTypeRequest.objects.all()
+        queryset = ActionTypeRequest.objects.using('control_vocabularies').all()
         resource_name = 'actiontypecvrequest'
         max_limit = 0
 
 
 class MethodTypeResource(ModelResource):
+    scheme = 'methodTypeCV'
+
     class Meta:
-        queryset = MethodType.objects.all()
+        queryset = MethodType.objects.using('control_vocabularies').all()
         resource_name = 'methodtypecv'
         max_limit = 0
 
 
 class MethodTypeRequestResource(ModelResource):
     class Meta:
-        queryset = MethodTypeRequest.objects.all()
+        queryset = MethodTypeRequest.objects.using('control_vocabularies').all()
         resource_name = 'methodtypecvrequest'
         max_limit = 0
 
 
 class OrganizationTypeResource(ModelResource):
+    scheme = 'organizationTypeCV'
+
     class Meta:
-        queryset = OrganizationType.objects.all()
+        queryset = OrganizationType.objects.using('control_vocabularies').all()
         resource_name = 'organizationtypecv'
         max_limit = 0
 
 
 class OrganizationTypeRequestResource(ModelResource):
     class Meta:
-        queryset = OrganizationTypeRequest.objects.all()
+        queryset = OrganizationTypeRequest.objects.using('control_vocabularies').all()
         resource_name = 'organizationtypecvrequest'
         max_limit = 0
 
 
 class SamplingFeatureGeotypeResource(ModelResource):
+    scheme = 'samplingFeatureGeotypeCV'
+
     class Meta:
-        queryset = SamplingFeatureGeotype.objects.all()
+        queryset = SamplingFeatureGeotype.objects.using('control_vocabularies').all()
         resource_name = 'samplingfeaturegeotypecv'
         max_limit = 0
 
 
 class SamplingFeatureGeotypeRequestResource(ModelResource):
     class Meta:
-        queryset = SamplingFeatureGeotypeRequest.objects.all()
+        queryset = SamplingFeatureGeotypeRequest.objects.using('control_vocabularies').all()
         resource_name = 'samplingfeaturegeotypecvrequest'
         max_limit = 0
 
 
 class SamplingFeatureTypeResource(ModelResource):
+    scheme = 'samplingFeatureTypeCV'
+
     class Meta:
-        queryset = SamplingFeatureType.objects.all()
+        queryset = SamplingFeatureType.objects.using('control_vocabularies').all()
         resource_name = 'samplingfeaturetypecv'
         max_limit = 0
 
 
 class SamplingFeatureTypeRequestResource(ModelResource):
     class Meta:
-        queryset = SamplingFeatureTypeRequest.objects.all()
+        queryset = SamplingFeatureTypeRequest.objects.using('control_vocabularies').all()
         resource_name = 'samplingfeaturetypecvrequest'
         max_limit = 0
 
 
 class SiteTypeResource(ModelResource):
+    scheme = 'siteTypeCV'
+
     class Meta:
-        queryset = SiteType.objects.all()
+        queryset = SiteType.objects.using('control_vocabularies').all()
         resource_name = 'sitetypecv'
         max_limit = 0
 
 
 class SiteTypeRequestResource(ModelResource):
     class Meta:
-        queryset = SiteTypeRequest.objects.all()
+        queryset = SiteTypeRequest.objects.using('control_vocabularies').all()
         resource_name = 'sitetypecvrequest'
         max_limit = 0
