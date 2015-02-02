@@ -9,30 +9,33 @@ class ControlVocabulary(models.Model):
     definition = models.TextField()
     category = models.CharField(max_length=255)
     provenance = models.TextField(blank=True)
-    provenanceuri = models.CharField(db_column='provenanceUri', blank=True, max_length=255)
+    provenance_uri = models.URLField(db_column='provenanceUri', blank=True)
     note = models.TextField(blank=True)
-    
+
     class Meta:
         abstract = True
 
 
 class ControlVocabularyRequest(models.Model):
-    requestid = models.TextField(db_column='requestId', primary_key=True)
+    request_id = models.TextField(db_column='requestId', primary_key=True)
     status = models.TextField()
-    datesubmitted = models.DateField(db_column='dateSubmitted')
-    datestatuschanged = models.DateField(db_column='dateStatusChanged')
-    requestnotes = models.TextField(db_column='requestNotes')
-    submittername = models.TextField(db_column='submitterName')
-    submitteremail = models.TextField(db_column='submitterEmail', blank=True)
-    requestreason = models.TextField(db_column='requestReason')
+    date_submitted = models.DateField(db_column='dateSubmitted')
+    date_status_changed = models.DateField(db_column='dateStatusChanged')
+    request_notes = models.TextField(db_column='requestNotes')
+    submitter_name = models.TextField(db_column='submitterName')
+    submitter_email = models.TextField(db_column='submitterEmail', blank=True)
+    request_reason = models.TextField(db_column='requestReason')
 
     class Meta:
         abstract = True
 
 
 class AbstractActionType(models.Model):
-    PRODUCES_RESULT_CHOICES = ('Yes', 'No')
-    producesresult = models.CharField(db_column='producesResult', max_length=5, choices=PRODUCES_RESULT_CHOICES)
+    PRODUCES_RESULT_CHOICES = (
+        ('Yes', 'Yes'),
+        ('No', 'No')
+    )
+    produces_result = models.CharField(db_column='producesResult', max_length=5, choices=PRODUCES_RESULT_CHOICES)
 
     class Meta:
         abstract = True
