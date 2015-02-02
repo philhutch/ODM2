@@ -7,9 +7,6 @@ from cvservices.api import ActionTypeResource, ActionTypeRequestResource, Method
     SamplingFeatureGeotypeResource, SamplingFeatureGeotypeRequestResource, SamplingFeatureTypeResource, \
     SamplingFeatureTypeRequestResource, SiteTypeResource, SiteTypeRequestResource
 
-
-admin.autodiscover()
-
 v1_api = Api(api_name='v1')
 v1_api.register(ActionTypeResource())
 v1_api.register(ActionTypeRequestResource())
