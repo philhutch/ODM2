@@ -1,0 +1,45 @@
+{% extends 'cvinterface/base.html' %}
+
+{% block body %}
+<div class="col-lg-12">
+    <h2 class="page-header">Master Control Vocabulary Registry for ODM2</h2>
+    <p>CUAHSI's ODM 2 has several controlled vocabulary tables. This web page has been developed to promote consistency
+        between different instances of the ODM through a moderated system for changing the master controlled
+        vocabularies. This web page displays the master controlled vocabulary entries and allows users to request
+        additions or changes to these. Users may then update their ODM controlled vocabulary tables from this master set
+        using ODM tools as described below.</p>
+
+    <p>Changes that you request will be forwarded to the master controlled vocabulary moderators who will attend to
+        requests as promptly as possible. When you submit a request, you should receive an email verifying that you
+        request has been received. When your request is approved, you should also receive an email confirmation. If you
+        have a request that cannot be accommodated on this website, please contact the master controlled vocabulary
+        moderators:</p>
+    <table class="moderatorsList">
+        <tbody>
+        <tr valign="top">
+            <td>
+                <p><b>Jeff Horsburgh</b><br>
+                    Utah State University<br>
+                    <a href="mailto:jeff.horsburgh@usu.edu">jeff.horsburgh@usu.edu</a></p>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+
+    <h2 class="page-header">Control Vocabularies</h2>
+
+    {% for vocabulary in vocabularies %}
+        <div class="col-sm-6 col-md-3">
+            <div class="thumbnail">
+                <div class="caption">
+                    <h3>{{ vocabulary.model_name }}</h3>
+                    <p>{{ vocabulary.name }}</p>
+                    <p><a href="{{ vocabulary.url }}" class="btn btn-default" role="button">View</a></p>
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+
+</div>
+
+{% endblock %}

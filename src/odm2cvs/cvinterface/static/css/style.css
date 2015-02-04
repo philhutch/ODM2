@@ -1,0 +1,31 @@
+#txtSearchList{
+	width:40%;
+}
+
+.moderatorsList td{
+	padding-right:100px;
+}
+
+.moderatorsList{
+	background:none;
+	margin-bottom: 50px;
+}
+
+.thumbnail{
+	height: 200px;
+}
+
+.btn-dock-down{
+	float:right;
+	bottom: -18px;
+	position: relative;
+}
+
+.term-description-container{
+
+}
+
+
+.add-new-dialog .col-lg-9{
+	margin-bottom:25px;
+}
