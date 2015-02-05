@@ -1,4 +1,4 @@
-from tastypie import fields
+from tastypie.api import Api
 from tastypie.resources import ModelResource
 
 from rdfserializer.api import RdfSerializer, ModelRdfResource
@@ -103,3 +103,18 @@ class SiteTypeRequestResource(ModelResource):
         queryset = SiteTypeRequest.objects.using('control_vocabularies').all()
         resource_name = 'sitetypecvrequest'
         max_limit = 0
+
+
+v1_api = Api(api_name='v1')
+v1_api.register(ActionTypeResource())
+v1_api.register(ActionTypeRequestResource())
+v1_api.register(MethodTypeResource())
+v1_api.register(MethodTypeRequestResource())
+v1_api.register(OrganizationTypeResource())
+v1_api.register(OrganizationTypeRequestResource())
+v1_api.register(SamplingFeatureGeotypeResource())
+v1_api.register(SamplingFeatureGeotypeRequestResource())
+v1_api.register(SamplingFeatureTypeResource())
+v1_api.register(SamplingFeatureTypeRequestResource())
+v1_api.register(SiteTypeResource())
+v1_api.register(SiteTypeRequestResource())
