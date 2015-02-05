@@ -1,0 +1,4 @@
+{% extends 'cvinterface/base_list.html' %}
+{% block term_url %}
+    {% url 'organizationtype_detail' concept.term %}
+{% endblock %}

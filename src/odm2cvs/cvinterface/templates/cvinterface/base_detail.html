@@ -25,10 +25,7 @@
                 <label class="col-lg-3 control-label">Note</label>
                 <div class="col-lg-9"><p>{{ object.note|default:"-" }}</p></div>
 
-                {% if object.produces_result %}
-                    <label class="col-lg-3 control-label">Produces Result</label>
-                    <div class="col-lg-9"><p>{{ object.produces_result }}</p></div>
-                {% endif %}
+                {% block specific_fields %}{% endblock %}
             </fieldset>
         </div>
     </div>
