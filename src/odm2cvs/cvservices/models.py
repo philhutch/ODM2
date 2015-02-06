@@ -43,71 +43,71 @@ class AbstractActionType(models.Model):
 
 class ActionType(ControlVocabulary, AbstractActionType):
     class Meta:
-        managed = False
+        #managed = False
         db_table = 'ActionTypeCV'
 
 
 class ActionTypeRequest(ControlVocabularyRequest, ControlVocabulary, AbstractActionType):
     class Meta:
-        managed = False
+        #managed = False
         db_table = 'ActionTypeCVRequests'
 
 
 class MethodType(ControlVocabulary):
     class Meta:
-        managed = False
+        #managed = False
         db_table = 'MethodTypeCV'
 
 
 class MethodTypeRequest(ControlVocabularyRequest, ControlVocabulary):
     class Meta:
-        managed = False
+        #managed = False
         db_table = 'MethodTypeCVRequests'
 
 
 class OrganizationType(ControlVocabulary):
     class Meta:
-        managed = False
+        #managed = False
         db_table = 'OrganizationTypeCV'
 
 
 class OrganizationTypeRequest(ControlVocabularyRequest, ControlVocabulary):
     class Meta:
-        managed = False
+        #managed = False
         db_table = 'OrganizationTypeCVRequests'
 
 
 class SamplingFeatureGeotype(ControlVocabulary):
     class Meta:
-        managed = False
+        #managed = False
         db_table = 'SamplingFeatureGeotypeCV'
 
 
 class SamplingFeatureGeotypeRequest(ControlVocabularyRequest, ControlVocabulary):
     class Meta:
-        managed = False
+        #managed = False
         db_table = 'SamplingFeatureGeotypeCVRequests'
 
 
 class SamplingFeatureType(ControlVocabulary):
     class Meta:
-        managed = False
+        #managed = False
         db_table = 'SamplingFeatureTypeCV'
 
 
 class SamplingFeatureTypeRequest(ControlVocabularyRequest, ControlVocabulary):
     class Meta:
-        managed = False
+        #managed = False
         db_table = 'SamplingFeatureTypeCVRequests'
 
 
 class SiteType(ControlVocabulary):
     class Meta:
-        managed = False
+        #managed = False
         db_table = 'SiteTypeCV'
 
 
 class SiteTypeRequest(ControlVocabularyRequest, ControlVocabulary):
     class Meta:
-        managed = False
+        #managed = False
         db_table = 'SiteTypeCVRequests'

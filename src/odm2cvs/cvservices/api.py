@@ -25,14 +25,14 @@ class ActionTypeRequestResource(ModelResource):
         max_limit = 0
 
 
-class MethodTypeResource(ModelResource):
+class MethodTypeResource(ModelRdfResource):
     scheme = 'methodTypeCV'
 
     class Meta:
         queryset = MethodType.objects.using('control_vocabularies').all()
         resource_name = 'methodtypecv'
         max_limit = 0
-
+        serializer = RdfSerializer()
 
 class MethodTypeRequestResource(ModelResource):
     class Meta:
@@ -41,7 +41,7 @@ class MethodTypeRequestResource(ModelResource):
         max_limit = 0
 
 
-class OrganizationTypeResource(ModelResource):
+class OrganizationTypeResource(ModelRdfResource):
     scheme = 'organizationTypeCV'
 
     class Meta:
@@ -57,7 +57,7 @@ class OrganizationTypeRequestResource(ModelResource):
         max_limit = 0
 
 
-class SamplingFeatureGeotypeResource(ModelResource):
+class SamplingFeatureGeotypeResource(ModelRdfResource):
     scheme = 'samplingFeatureGeotypeCV'
 
     class Meta:
@@ -73,7 +73,7 @@ class SamplingFeatureGeotypeRequestResource(ModelResource):
         max_limit = 0
 
 
-class SamplingFeatureTypeResource(ModelResource):
+class SamplingFeatureTypeResource(ModelRdfResource):
     scheme = 'samplingFeatureTypeCV'
 
     class Meta:
