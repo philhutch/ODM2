@@ -1,4 +1,4 @@
-from django.views.generic import ListView, DetailView
+from django.views.generic import ListView, DetailView, CreateView
 from django.core.urlresolvers import reverse
 
 from sys import modules
@@ -7,6 +7,10 @@ from inspect import getmembers, isclass
 import cvservices.models
 from cvservices.models import ControlVocabulary, ControlVocabularyRequest, ActionType, \
     MethodType, OrganizationType, SamplingFeatureGeotype, SamplingFeatureType, SiteType
+
+from cvservices.models import ActionTypeRequest
+
+from cvinterface.forms import ActionTypeRequestForm
 
 
 class VocabularyListView(ListView):
@@ -40,77 +44,66 @@ class HomeView(ListView):
 
 class ActionTypeView(VocabularyListView):
     model = ActionType
-    queryset = ActionType.objects.using('control_vocabularies')
     template_name = 'cvinterface/vocabularies/actiontype_list.html'
 
 
 class MethodTypeView(VocabularyListView):
     model = MethodType
-    queryset = MethodType.objects.using('control_vocabularies')
     template_name = 'cvinterface/vocabularies/methodtype_list.html'
 
 
 class OrganizationTypeView(VocabularyListView):
     model = OrganizationType
-    queryset = OrganizationType.objects.using('control_vocabularies')
     template_name = 'cvinterface/vocabularies/organizationtype_list.html'
 
 
 class SamplingFeatureGeotypeView(VocabularyListView):
     model = SamplingFeatureGeotype
-    queryset = SamplingFeatureGeotype.objects.using('control_vocabularies')
     template_name = 'cvinterface/vocabularies/samplingfeaturegeotype_list.html'
 
 
 class SamplingFeatureTypeView(VocabularyListView):
     model = SamplingFeatureType
-    queryset = SamplingFeatureType.objects.using('control_vocabularies')
     template_name = 'cvinterface/vocabularies/samplingfeaturetype_list.html'
 
 
 class SiteTypeView(VocabularyListView):
     model = SiteType
-    queryset = SiteType.objects.using('control_vocabularies')
     template_name = 'cvinterface/vocabularies/sitetype_list.html'
 
 
 # Detail Views
 class ActionTypeDetailView(DetailView):
     model = ActionType
-    queryset = ActionType.objects.using('control_vocabularies')
     template_name = 'cvinterface/vocabularies/actiontype_detail.html'
 
 
 class MethodTypeDetailView(DetailView):
     model = MethodType
-    queryset = MethodType.objects.using('control_vocabularies')
     template_name = 'cvinterface/vocabularies/methodtype_detail.html'
 
 
 class OrganizationTypeDetailView(DetailView):
     model = OrganizationType
-    queryset = OrganizationType.objects.using('control_vocabularies')
     template_name = 'cvinterface/vocabularies/organizationtype_detail.html'
 
 
 class SamplingFeatureGeotypeDetailView(DetailView):
     model = SamplingFeatureGeotype
-    queryset = SamplingFeatureGeotype.objects.using('control_vocabularies')
     template_name = 'cvinterface/vocabularies/samplingfeaturegeotype_detail.html'
 
 
 class SamplingFeatureTypeDetailView(DetailView):
     model = SamplingFeatureType
-    queryset = SamplingFeatureType.objects.using('control_vocabularies')
     template_name = 'cvinterface/vocabularies/samplingfeaturetype_detail.html'
 
 
 class SiteTypeDetailView(DetailView):
     model = SiteType
-    queryset = SiteType.objects.using('control_vocabularies')
     template_name = 'cvinterface/vocabularies/sitetype_detail.html'
 
 
+# list views
 action_type_view = ActionTypeView.as_view()
 method_type_view = MethodTypeView.as_view()
 organization_type_view = OrganizationTypeView.as_view()
@@ -124,4 +117,6 @@ view_functions = {ActionTypeView: action_type_view, MethodTypeView: method_type_
                   SamplingFeatureGeotypeView: sampling_feature_geotype_view,
                   SamplingFeatureTypeView: sampling_feature_type_view, SiteTypeView: site_type_view}
 
-
+# create views
+action_type_request_create_view = CreateView.as_view(template_name='cvinterface/requests/actiontype_form.html',
+                                                     form_class=ActionTypeRequestForm)

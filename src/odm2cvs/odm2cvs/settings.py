@@ -39,7 +39,8 @@ INSTALLED_APPS = (
     'tastypie',
     'cvservices',
     'cvinterface',
-    'rdfserializer'
+    'rdfserializer',
+    'widget_tweaks',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -111,3 +112,5 @@ TEMPLATE_DIRS = (
 )
 
 TASTYPIE_DEFAULT_FORMATS = ['json']
+
+DATABASE_ROUTERS = ['odm2cvs.db_routers.ControlVocabularyRouter']

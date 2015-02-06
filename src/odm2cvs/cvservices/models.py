@@ -17,14 +17,19 @@ class ControlVocabulary(models.Model):
 
 
 class ControlVocabularyRequest(models.Model):
-    request_id = models.TextField(db_column='requestId', primary_key=True)
-    status = models.TextField()
+    STATUS_CHOICES = (
+        ('Pending', 'Yes'),
+        ('Rejected', 'No'),
+        ('Accepted', 'Accepted'),
+    )
+    request_id = models.CharField(max_length=255, db_column='requestId', primary_key=True)
+    status = models.CharField(max_length=255, db_column='status', choices=STATUS_CHOICES)
     date_submitted = models.DateField(db_column='dateSubmitted')
     date_status_changed = models.DateField(db_column='dateStatusChanged')
     request_notes = models.TextField(db_column='requestNotes')
-    submitter_name = models.TextField(db_column='submitterName')
-    submitter_email = models.TextField(db_column='submitterEmail', blank=True)
-    request_reason = models.TextField(db_column='requestReason')
+    submitter_name = models.CharField(max_length=255, db_column='submitterName')
+    submitter_email = models.CharField(max_length=255, db_column='submitterEmail', blank=True)
+    request_reason = models.CharField(max_length=255, db_column='requestReason')
 
     class Meta:
         abstract = True
