@@ -80,6 +80,7 @@ class SamplingFeatureTypeResource(ModelRdfResource):
         queryset = SamplingFeatureType.objects.using('control_vocabularies').all()
         resource_name = 'samplingfeaturetypecv'
         max_limit = 0
+        serializer = RdfSerializer()
 
 
 class SamplingFeatureTypeRequestResource(ModelResource):
