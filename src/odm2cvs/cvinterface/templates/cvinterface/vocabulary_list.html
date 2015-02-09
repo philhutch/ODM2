@@ -13,7 +13,7 @@
             </ul>
         {% endif %}
         <a id="btnAddNew" href="{% block create_request %}{% endblock %}" class="btn btn-default btn-dock-down">New</a>
-        <h2 class="divTitle">DataTypeCV Values</h2>
+        <h2 class="divTitle">{% block vocabulary_type %}{% endblock %} Vocabulary Concepts</h2>
 
         <div>
             {% block data_list %}
