@@ -64,7 +64,7 @@ class ActionTypeRequest(ControlVocabularyRequest, ControlVocabulary, AbstractAct
 
 class MethodType(ControlVocabulary):
     class Meta:
-        managed = False
+        #managed = False
         db_table = 'MethodTypeCV'
         verbose_name = 'Method Type Control Vocabulary'
 
