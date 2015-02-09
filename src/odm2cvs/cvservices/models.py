@@ -25,7 +25,7 @@ class ControlVocabularyRequest(models.Model):
         ('Accepted', 'Accepted'),
     )
     request_id = models.CharField(max_length=255, db_column='requestId', primary_key=True, default=uuid4)
-    status = models.CharField(max_length=255, db_column='status', choices=STATUS_CHOICES)
+    status = models.CharField(max_length=255, db_column='status', choices=STATUS_CHOICES, default=STATUS_CHOICES[0][0])
     date_submitted = models.DateField(db_column='dateSubmitted', default=timezone.now())
     date_status_changed = models.DateField(db_column='dateStatusChanged', default=timezone.now())
     request_notes = models.TextField(db_column='requestNotes')
