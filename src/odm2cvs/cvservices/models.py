@@ -1,4 +1,6 @@
 from __future__ import unicode_literals
+from django.utils import timezone
+from uuid import uuid4
 
 from django.db import models
 
@@ -18,14 +20,14 @@ class ControlVocabulary(models.Model):
 
 class ControlVocabularyRequest(models.Model):
     STATUS_CHOICES = (
-        ('Pending', 'Yes'),
-        ('Rejected', 'No'),
+        ('Pending', 'Pending'),
+        ('Rejected', 'Rejected'),
         ('Accepted', 'Accepted'),
     )
-    request_id = models.CharField(max_length=255, db_column='requestId', primary_key=True)
+    request_id = models.CharField(max_length=255, db_column='requestId', primary_key=True, default=uuid4)
     status = models.CharField(max_length=255, db_column='status', choices=STATUS_CHOICES)
-    date_submitted = models.DateField(db_column='dateSubmitted')
-    date_status_changed = models.DateField(db_column='dateStatusChanged')
+    date_submitted = models.DateField(db_column='dateSubmitted', default=timezone.now())
+    date_status_changed = models.DateField(db_column='dateStatusChanged', default=timezone.now())
     request_notes = models.TextField(db_column='requestNotes')
     submitter_name = models.CharField(max_length=255, db_column='submitterName')
     submitter_email = models.CharField(max_length=255, db_column='submitterEmail', blank=True)
