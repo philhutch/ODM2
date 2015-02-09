@@ -1,17 +1,17 @@
 from django.conf.urls import patterns, include, url
 from django.contrib import admin
 
-from django.views.generic.base import View
-
 from cvservices.api import v1_api
 
-from cvinterface.views import HomeView, ActionTypeDetailView, MethodTypeDetailView, OrganizationTypeDetailView, \
-    SamplingFeatureGeotypeDetailView, SamplingFeatureTypeDetailView, SiteTypeDetailView
+from cvinterface.views.base_views import HomeView
 
-from cvinterface.views import action_type_view, method_type_view, organization_type_view, \
+from cvinterface.views.vocabulary_views import action_type_view, method_type_view, organization_type_view, \
     sampling_feature_geotype_view, sampling_feature_type_view, site_type_view
 
-from cvinterface.views import SuccessRedirectView, action_type_request_create_view, method_type_request_create_view, \
+from cvinterface.views.vocabulary_views import ActionTypeDetailView, MethodTypeDetailView, OrganizationTypeDetailView, \
+    SamplingFeatureGeotypeDetailView, SamplingFeatureTypeDetailView, SiteTypeDetailView
+
+from cvinterface.views.request_views import SuccessRedirectView, action_type_request_create_view, method_type_request_create_view, \
     organization_type_request_create_view, sampling_feature_geotype_request_create_view, \
     sampling_feature_type_request_create_view, site_type_request_create_view
 
