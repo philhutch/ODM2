@@ -2,6 +2,10 @@
 	width:40%;
 }
 
+.row {
+	padding-top: 30px;
+}
+
 .moderatorsList td{
 	padding-right:100px;
 }
@@ -9,10 +13,6 @@
 .moderatorsList{
 	background:none;
 	margin-bottom: 50px;
-}
-
-.thumbnail{
-	height: 200px;
 }
 
 .btn-dock-down{
@@ -25,6 +25,10 @@
 
 }
 
+.section {
+	padding-bottom: 20px;
+	padding-top: 10px;
+}
 
 .add-new-dialog .col-lg-9{
 	margin-bottom:25px;

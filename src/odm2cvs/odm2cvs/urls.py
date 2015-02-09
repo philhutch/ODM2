@@ -11,9 +11,14 @@ from cvinterface.views.vocabulary_views import action_type_view, method_type_vie
 from cvinterface.views.vocabulary_views import ActionTypeDetailView, MethodTypeDetailView, OrganizationTypeDetailView, \
     SamplingFeatureGeotypeDetailView, SamplingFeatureTypeDetailView, SiteTypeDetailView
 
-from cvinterface.views.request_views import SuccessRedirectView, action_type_request_create_view, method_type_request_create_view, \
-    organization_type_request_create_view, sampling_feature_geotype_request_create_view, \
-    sampling_feature_type_request_create_view, site_type_request_create_view
+from cvinterface.views.request_views import action_type_request_view, method_type_request_view, \
+    organization_type_request_view, sampling_feature_geotype_request_view, sampling_feature_type_request_view, \
+    site_type_request_view
+
+from cvinterface.views.request_views import RequestsView, SuccessRedirectView, action_type_request_create_view, \
+    method_type_request_create_view, organization_type_request_create_view, \
+    sampling_feature_geotype_request_create_view, sampling_feature_type_request_create_view, \
+    site_type_request_create_view
 
 
 urlpatterns = patterns('',
@@ -21,8 +26,15 @@ urlpatterns = patterns('',
     url(r'^api/', include(v1_api.urls)),
     url(r'^admin/', include(admin.site.urls)),
 
+    url(r'^requests/$', RequestsView.as_view(), name='requests_list'),
     url(r'^requests/success/(?P<vocabulary>\w+)/$', SuccessRedirectView.as_view(), name='request_success'),
-    # url(r'^requests/actiontype, etc/$', ),
+
+    url(r'^requests/actiontype/$', action_type_request_view, name='actiontype_requests'),
+    url(r'^requests/methodtype/$', method_type_request_view, name='methodtype_requests'),
+    url(r'^requests/organizationtype/$', organization_type_request_view, name='organizationtype_requests'),
+    url(r'^requests/samplingfeaturegeotype/$', sampling_feature_geotype_request_view, name='samplingfeaturegeotype_requests'),
+    url(r'^requests/samplingfeaturetype/$', sampling_feature_type_request_view, name='samplingfeaturetype_requests'),
+    url(r'^requests/sitetype/$', site_type_request_view, name='sitetype_requests'),
 
     url(r'^actiontype/$', action_type_view, name='actiontype'),
     url(r'^actiontype/(?P<pk>\w+)/$', ActionTypeDetailView.as_view(), name='actiontype_detail'),
