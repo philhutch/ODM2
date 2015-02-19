@@ -21,6 +21,10 @@
 	position: relative;
 }
 
+.control-label {
+	white-space: nowrap;
+}
+
 .term-description-container{
 
 }

@@ -2,7 +2,7 @@ from sys import modules
 from inspect import getmembers, isclass
 
 from django.contrib import messages
-from django.views.generic import ListView, CreateView, RedirectView
+from django.views.generic import ListView, DetailView, CreateView, RedirectView
 from django.core.urlresolvers import reverse, reverse_lazy
 
 import cvservices.models
@@ -126,3 +126,9 @@ class SuccessRedirectView(RedirectView):
         messages.add_message(self.request, messages.SUCCESS, self.message)
         # TODO: if user is an administrator, redirect to the list of requests.
         return reverse(vocabulary)
+
+
+# detail views
+class ActionTypeRequestDetailView(DetailView):
+    model = ActionTypeRequest
+    template_name = 'cvinterface/requests/actiontype_request_detail.html'
