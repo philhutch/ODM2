@@ -25,10 +25,6 @@ except KeyError:
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.7/howto/deployment/checklist/
 
-# SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = '(rm(yh3+q1q%eimdubt0uu97rvq7=!mz!h4ty4@yed&yn1s=n!'
-
-# SECURITY WARNING: don't run with debug turned on in production!
 
 ALLOWED_HOSTS = []
 
