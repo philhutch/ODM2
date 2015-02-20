@@ -12,6 +12,15 @@ https://docs.djangoproject.com/en/1.7/ref/settings/
 import os
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 
+try:
+    SECRET_KEY = os.environ['ODM2CVS_SECRET_KEY']
+    DATABASE_HOST = os.environ['ODM2CVS_DATABASE_HOST']
+    DATABASE_USER = os.environ['ODM2CVS_DATABASE_USER']
+    DATABASE_PASSWORD = os.environ['ODM2CVS_DATABASE_PASSWORD']
+except KeyError:
+    print "Please set the required environment variables ODM2CVS_SECRET_KEY, ODM2CVS_DATABASE_HOST, " \
+          "ODM2CVS_DATABASE_USER, ODM2CVS_DATABASE_PASSWORD"
+    exit(True)
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.7/howto/deployment/checklist/
@@ -62,9 +71,9 @@ DATABASES = {
     'default': {
         'ENGINE': 'sql_server.pyodbc',
         'NAME': 'ODM2CVS_Config',
-        'USER': 'Django',
-        'PASSWORD': 'C00lPassword!',
-        'HOST': 'hawk\mssqlserver2012',
+        'USER': DATABASE_USER,
+        'PASSWORD': DATABASE_PASSWORD,
+        'HOST': DATABASE_HOST,
         'PORT': '',
 
         'OPTIONS': {
@@ -74,9 +83,9 @@ DATABASES = {
     'control_vocabularies': {
         'ENGINE': 'sql_server.pyodbc',
         'NAME': 'ODM2CVS',
-        'USER': 'Django',
-        'PASSWORD': 'C00lPassword!',
-        'HOST': 'hawk\mssqlserver2012',
+        'USER': DATABASE_USER,
+        'PASSWORD': DATABASE_PASSWORD,
+        'HOST': DATABASE_HOST,
         'PORT': '',
 
         'OPTIONS': {
