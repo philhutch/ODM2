@@ -1,0 +1,72 @@
+{% extends 'cvinterface/base.html' %}
+
+{% block body %}
+    <div class="col-lg-6">
+        <div class="well term-description-container">
+            <fieldset>
+                <legend>{{ object.name }} - {{ object.status }} {% if object.status == 'Pending'%} since {% else %} on {% endif %} {{ object.date_status_changed }}</legend>
+
+                <label class="col-lg-3 control-label">Term</label>
+                <div class="col-lg-9"><p>{{ object.term }}</p></div>
+
+                <label class="col-lg-3 control-label">Submitted By</label>
+                <div class="col-lg-9"><p>{{ object.submitter_name }}: {{ object.submitter_email }}</p></div>
+
+                <label class="col-lg-3 control-label">Submission Date</label>
+                <div class="col-lg-9"><p>{{ object.date_submitted|default:"-" }}</p></div>
+
+                <label class="col-lg-3 control-label">Request Reason</label>
+                <div class="col-lg-9"><p>{{ object.request_reason|default:"-" }}</p></div>
+
+                <label class="col-lg-3 control-label">Definition</label>
+                <div class="col-lg-9"><p>{{ object.definition }}</p></div>
+
+                <label class="col-lg-3 control-label">Category</label>
+                <div class="col-lg-9"><p>{{ object.category|default:"-" }}</p></div>
+
+                <label class="col-lg-3 control-label">Provenance</label>
+                <div class="col-lg-9"><p>{{ object.provenance|default:"-" }}</p></div>
+
+                <label class="col-lg-3 control-label">ProvenanceUri</label>
+                <div class="col-lg-9"><p>{{ object.provenanceuri|default:"-" }}</p></div>
+
+                <label class="col-lg-3 control-label">Note</label>
+                <div class="col-lg-9"><p>{{ object.note|default:"-" }}</p></div>
+
+                <label class="col-lg-3 control-label">Request Notes</label>
+                <div class="col-lg-9"><p>{{ object.request_notes|default:"-" }}</p></div>
+
+                {% block specific_fields %}{% endblock %}
+            </fieldset>
+        </div>
+    </div>
+{% endblock %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

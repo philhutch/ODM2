@@ -12,17 +12,16 @@ https://docs.djangoproject.com/en/1.7/ref/settings/
 import os
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 
+try:
+    SECRET_KEY = os.environ['ODM2CVS_SECRET_KEY']
+    DATABASE_HOST = os.environ['ODM2CVS_DATABASE_HOST']
+    DATABASE_USER = os.environ['ODM2CVS_DATABASE_USER']
+    DATABASE_PASSWORD = os.environ['ODM2CVS_DATABASE_PASSWORD']
+except KeyError:
+    print "Please set the required environment variables ODM2CVS_SECRET_KEY, ODM2CVS_DATABASE_HOST, " \
+          "ODM2CVS_DATABASE_USER, ODM2CVS_DATABASE_PASSWORD"
+    exit(True)
 
-# Quick-start development settings - unsuitable for production
-# See https://docs.djangoproject.com/en/1.7/howto/deployment/checklist/
-
-# SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = '(rm(yh3+q1q%eimdubt0uu97rvq7=!mz!h4ty4@yed&yn1s=n!'
-
-# SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
-
-TEMPLATE_DEBUG = True
 
 ALLOWED_HOSTS = []
 
@@ -58,38 +57,29 @@ ROOT_URLCONF = 'odm2cvs.urls'
 WSGI_APPLICATION = 'odm2cvs.wsgi.application'
 
 
+
 # Database
-# https://docs.djangoproject.com/en/1.7/ref/settings/#databases
 
 DATABASES = {
     'default': {
-        'ENGINE': 'sql_server.pyodbc',
-        'NAME': 'ODM2CVS_Config',
-        'USER': 'Django',
-        'PASSWORD': 'C00lPassword!',
-        'HOST': 'hawk\mssqlserver2012',
-        'PORT': '',
-
-        'OPTIONS': {
-            'driver': 'SQL Server Native Client 11.0',
-        },
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'odmcvsconfig',
+        'USER': DATABASE_USER,
+        'PASSWORD': DATABASE_PASSWORD,
+        'HOST': DATABASE_HOST,
+        'PORT': '3306',
     },
     'control_vocabularies': {
-        'ENGINE': 'sql_server.pyodbc',
-        'NAME': 'ODM2CVS',
-        'USER': 'Django',
-        'PASSWORD': 'C00lPassword!',
-        'HOST': 'hawk\mssqlserver2012',
-        'PORT': '',
-
-        'OPTIONS': {
-            'driver': 'SQL Server Native Client 11.0',
-        },
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'odmcvs',
+        'USER': DATABASE_USER,
+        'PASSWORD': DATABASE_PASSWORD,
+        'HOST': DATABASE_HOST,
+        'PORT': '3306',
     }
 }
 
 # Internationalization
-# https://docs.djangoproject.com/en/1.7/topics/i18n/
 
 LANGUAGE_CODE = 'en-us'
 
@@ -102,13 +92,8 @@ USE_L10N = True
 USE_TZ = True
 
 
-# Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/1.7/howto/static-files/
-
-STATIC_URL = '/static/'
-
 TEMPLATE_DIRS = (
-    os.path.join(BASE_DIR,  'templates'),
+    os.path.join(BASE_DIR, '../../templates'),
 )
 
 TASTYPIE_DEFAULT_FORMATS = ['json']

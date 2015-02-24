@@ -59,7 +59,7 @@ class ActionTypeRequest(ControlVocabularyRequest, ControlVocabulary, AbstractAct
     class Meta:
         managed = False
         db_table = 'ActionTypeCVRequests'
-        verbose_name = 'Action Type Control Vocabulary Request'
+        verbose_name = 'Action Type CV Request'
 
 
 class MethodType(ControlVocabulary):
@@ -73,7 +73,7 @@ class MethodTypeRequest(ControlVocabularyRequest, ControlVocabulary):
     class Meta:
         managed = False
         db_table = 'MethodTypeCVRequests'
-        verbose_name = 'Method Type Control Vocabulary Request'
+        verbose_name = 'Method Type CV Request'
 
 
 class OrganizationType(ControlVocabulary):
@@ -87,35 +87,35 @@ class OrganizationTypeRequest(ControlVocabularyRequest, ControlVocabulary):
     class Meta:
         managed = False
         db_table = 'OrganizationTypeCVRequests'
-        verbose_name = 'Organization Type Control Vocabulary Request'
+        verbose_name = 'Organization Type CV Request'
 
 
 class SamplingFeatureGeotype(ControlVocabulary):
     class Meta:
         managed = False
         db_table = 'SamplingFeatureGeotypeCV'
-        verbose_name = 'Sampling Feature Geo-type Control Vocabulary'
+        verbose_name = 'Sampling Feature Geo-type CV'
 
 
 class SamplingFeatureGeotypeRequest(ControlVocabularyRequest, ControlVocabulary):
     class Meta:
         managed = False
         db_table = 'SamplingFeatureGeotypeCVRequests'
-        verbose_name = 'Sampling Feature Geo-type Control Vocabulary Request'
+        verbose_name = 'Sampling Feature Geo-type CV Request'
 
 
 class SamplingFeatureType(ControlVocabulary):
     class Meta:
         managed = False
         db_table = 'SamplingFeatureTypeCV'
-        verbose_name = 'Sampling Feature Type Control Vocabulary'
+        verbose_name = 'Sampling Feature Type CV'
 
 
 class SamplingFeatureTypeRequest(ControlVocabularyRequest, ControlVocabulary):
     class Meta:
         managed = False
         db_table = 'SamplingFeatureTypeCVRequests'
-        verbose_name = 'Sampling Feature Type Control Vocabulary Request'
+        verbose_name = 'Sampling Feature Type CV Request'
 
 
 class SiteType(ControlVocabulary):
@@ -129,4 +129,4 @@ class SiteTypeRequest(ControlVocabularyRequest, ControlVocabulary):
     class Meta:
         managed = False
         db_table = 'SiteTypeCVRequests'
-        verbose_name = 'Site Type Control Vocabulary Request'
+        verbose_name = 'Site Type CV Request'
