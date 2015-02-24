@@ -22,9 +22,6 @@ except KeyError:
           "ODM2CVS_DATABASE_USER, ODM2CVS_DATABASE_PASSWORD"
     exit(True)
 
-# Quick-start development settings - unsuitable for production
-# See https://docs.djangoproject.com/en/1.7/howto/deployment/checklist/
-
 
 ALLOWED_HOSTS = []
 
@@ -60,12 +57,12 @@ ROOT_URLCONF = 'odm2cvs.urls'
 WSGI_APPLICATION = 'odm2cvs.wsgi.application'
 
 
+
 # Database
-# https://docs.djangoproject.com/en/1.7/ref/settings/#databases
 
 DATABASES = {
     'default': {
-        'ENGINE': 'mysql.connector.django',
+        'ENGINE': 'django.db.backends.mysql',
         'NAME': 'odmcvsconfig',
         'USER': DATABASE_USER,
         'PASSWORD': DATABASE_PASSWORD,
@@ -73,7 +70,7 @@ DATABASES = {
         'PORT': '3306',
     },
     'control_vocabularies': {
-        'ENGINE': 'mysql.connector.django',
+        'ENGINE': 'django.db.backends.mysql',
         'NAME': 'odmcvs',
         'USER': DATABASE_USER,
         'PASSWORD': DATABASE_PASSWORD,
@@ -83,7 +80,6 @@ DATABASES = {
 }
 
 # Internationalization
-# https://docs.djangoproject.com/en/1.7/topics/i18n/
 
 LANGUAGE_CODE = 'en-us'
 
