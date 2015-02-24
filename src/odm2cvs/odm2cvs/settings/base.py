@@ -65,28 +65,20 @@ WSGI_APPLICATION = 'odm2cvs.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'sql_server.pyodbc',
-        'NAME': 'ODM2CVS_Config',
+        'ENGINE': 'mysql.connector.django',
+        'NAME': 'odmcvsconfig',
         'USER': DATABASE_USER,
         'PASSWORD': DATABASE_PASSWORD,
         'HOST': DATABASE_HOST,
-        'PORT': '',
-
-        'OPTIONS': {
-            'driver': 'SQL Server Native Client 11.0',
-        },
+        'PORT': '3306',
     },
     'control_vocabularies': {
-        'ENGINE': 'sql_server.pyodbc',
-        'NAME': 'ODM2CVS',
+        'ENGINE': 'mysql.connector.django',
+        'NAME': 'odmcvs',
         'USER': DATABASE_USER,
         'PASSWORD': DATABASE_PASSWORD,
         'HOST': DATABASE_HOST,
-        'PORT': '',
-
-        'OPTIONS': {
-            'driver': 'SQL Server Native Client 11.0',
-        },
+        'PORT': '3306',
     }
 }
 
