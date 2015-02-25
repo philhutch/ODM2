@@ -54,7 +54,7 @@ MIDDLEWARE_CLASSES = (
 
 ROOT_URLCONF = 'odm2cvs.urls'
 
-WSGI_APPLICATION = 'odm2cvs.wsgi.application'
+WSGI_APPLICATION = 'odm2cvs.wsgi.wsgi.application'
 
 
 
