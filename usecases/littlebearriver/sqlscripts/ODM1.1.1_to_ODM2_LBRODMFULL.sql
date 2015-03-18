@@ -127,7 +127,8 @@ INSERT INTO ODM2.ODM2.People (PersonFirstName, PersonLastName)
 SELECT DISTINCT
   CAST(SUBSTRING(ContactName, 1, CHARINDEX(' ', ContactName) - 1) AS VARCHAR(255)) AS PersonFirstName,
   CAST(SUBSTRING(ContactName, CHARINDEX(' ', ContactName) + 1, 8000) AS VARCHAR(255)) AS PersonLastName
-FROM LittleBearRiverODM.dbo.Sources  
+FROM LittleBearRiverODM.dbo.Sources
+WHERE ContactName like '% %'
 ORDER BY PersonLastName;
 
 --------------------------------------------------------------------------------------
